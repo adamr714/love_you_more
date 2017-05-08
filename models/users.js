@@ -17,10 +17,10 @@ const postSchmea = mongoose.Schema({
         firstName : {type: String, required: true},
         lastName : {type: String, required: true},
         email : {type: String, required: true},
-        phone : type: Number,
-        textMessage : type: String
+        phone : Number,
+        textMessage : String
     },
-    anniversary : type: Number
+    anniversary : Number
 });
 
 const Users = mongoose.model('users', postSchmea);

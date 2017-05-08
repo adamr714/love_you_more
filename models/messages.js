@@ -7,9 +7,9 @@ const postSchmea = mongoose.Schema({
     sender : {type: String, required: true},
     recipient : {type: String, required: true},
     message : {type: String, required: true},
-    date : type: Number,
-    time : type: Number
-    NumberOfMessagesSent : type: Number
+    date : Number,
+    time : Number,
+    NumberOfMessagesSent :  Number
 });
 
 const Messages = mongoose.model('posts', postSchmea);
