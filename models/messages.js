@@ -8,9 +8,9 @@ const postSchmea = mongoose.Schema({
     recipient : {type: String, required: true},
     message : {type: String, required: true},
     date : Number,
-    time : Number,
+    reference: {type: String, required: true},
     NumberOfMessagesSent :  Number
 });
 
-const Messages = mongoose.model('posts', postSchmea);
+const Messages = mongoose.model('messages', postSchmea);
 module.exports = {Messages};

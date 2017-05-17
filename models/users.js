@@ -12,20 +12,10 @@ const postSchmea = mongoose.Schema({
         phone : type: Number,
         textMessage : type: String
     },
-   userName2 : {type: String, required: true},
-    userName1Info : {
-        firstName : {type: String, required: true},
-        lastName : {type: String, required: true},
-        email : {type: String, required: true},
-        phone : Number,
-        textMessage : String
-    },
-    anniversary : Number
+    anniversary : Number,
+    reference : {type: String, required: true},
+
 });
 
 const Users = mongoose.model('users', postSchmea);
 module.exports = {Users};
-
-
-
-
