@@ -17,5 +17,5 @@ const postSchmea = mongoose.Schema({
 
 });
 
-const Users = mongoose.model('users', postSchmea);
+const Users = mongoose.model('users', postSchmea, 'users');
 module.exports = {Users};
