@@ -11,12 +11,15 @@
   "author": "Adam Rosenblum",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.0",
     "babel-runtime": "^6.23.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongoose": "^4.9.8",
     "morgan": "^1.8.1",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -29,6 +32,7 @@
     "babel-watch": "^2.0.6",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "faker": "^3.1.0",
     "mocha": "^3.2.0"
   }
 }

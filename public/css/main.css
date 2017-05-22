@@ -2,6 +2,9 @@ html, body {
   min-height:100%
 }
 
+.login {
+    display: hidden;
+}
 
 header {
 	background-color: crimson;
