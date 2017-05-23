@@ -7,8 +7,8 @@ const postSchmea = mongoose.Schema({
     recipient : {type: String, required: true},
     message : {type: String, required: true},
     date : Number,
-    reference: {type: String, required: true},
-    deleted : false
+    reference : {type: String, required: true}
+    //, delete : {type: boolean, default: false}
 });
 
 const Messages = mongoose.model('messages', postSchmea, 'messages');

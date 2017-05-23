@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-// const messageRouter = require('./messageRouter');
+const messageRouter = require('./messageRouter');
 const cannedRouter = require('./cannedRouter');
 // const userRouter = require('./userRouter');
 
@@ -19,8 +19,7 @@ app.use(express.static('public'));
 
 
 app.use('/canned_messages', cannedRouter);
-
-// app.use('/messages', messageRouter);
+app.use('/messages', messageRouter);
 // app.use('/users',userRouter);
 
 app.get('/', (req, res) => {
