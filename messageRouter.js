@@ -59,4 +59,40 @@ router.delete('/:id', async (req, res) => {
 });
 
 
+// Put Section
+router.put('/:id', jsonParser, async (req, res) => {
+  const requiredFields = ['sender', 'recipient', 'message', 'reference'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+  if (req.params.id !== req.body._id) {
+    const message = `Request path id (${req.params.id}) and request body id (${req.body._id}) must match`;
+    console.error(message);
+    return res.status(400).send(message);
+  }
+  console.log(`Updating Messages  \`${req.params.id}\``);
+
+  const updateableFields = ['sender', 'recipient', 'message', 'reference'];
+
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      toUpdate[field] = req.body[field];
+    }
+  });
+
+  Messages
+    // all key/value pairs in toUpdate will be updated -- that's what `$set` does
+    .findByIdAndUpdate(req.params.id, {$set: toUpdate})
+    .exec()
+    .then(data => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
+
+
 module.exports = router;
