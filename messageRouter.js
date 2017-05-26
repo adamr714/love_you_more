@@ -44,17 +44,32 @@ router.post('/', jsonParser, async (req, res) => {
   };
 });
 
-
-// Delete Section
+// Delete Section - As Update
 router.delete('/:id', async (req, res) => {
+    let deletedMessage = {delete: true};
+
     try {    
-      let data = await Messages.findByIdAndRemove(req.params.id).exec();
-      res.status(200).json({message: 'success'});
+      let data = await Messages.findByIdAndUpdate(req.params.id, {$set: deletedMessage}).exec();
+      console.log(data.message);
+      data.message = req.body.message;
+      res.status(200).send(data);
     }  catch(err) {
       console.error(err);
       res.status(500).json({error: 'something went terribly wrong'});
     }
 });
+
+
+// Delete Section - As Delete
+// router.delete('/:id', async (req, res) => {
+//     try {    
+//       let data = await Messages.findByIdAndRemove(req.params.id).exec();
+//       res.status(200).json({message: 'success'});
+//     }  catch(err) {
+//       console.error(err);
+//       res.status(500).json({error: 'something went terribly wrong'});
+//     }
+// });
 
 // Put Section
 router.put('/:id', jsonParser, async (req, res) => {
@@ -80,42 +95,5 @@ router.put('/:id', jsonParser, async (req, res) => {
   }
 });
 
-
-// router.put('/:id', jsonParser, (req, res) => {
-//   const requiredFields = ['sender', 'recipient', 'message', 'reference'];
-//   for (let i=0; i<requiredFields.length; i++) {
-//     const field = requiredFields[i];
-//     if (!(field in req.body)) {
-//       const message = `Missing \`${field}\` in request body`
-//       console.error(message);
-//       return res.status(400).send(message);
-//     }
-//   }
-//   if (req.params.id !== req.body._id) {
-//     const message = `Request path id (${req.params.id}) and request body id (${req.body._id}) must match`;
-//     console.error(message);
-//     return res.status(400).send(message);
-//   }
-//   console.log(`Updating blog post \`${req.params.id}\``);
-
-//   const toUpdate = {author:{}};
-//   const updateableFields = ['sender', 'recipient', 'message', 'reference'];
-//   const authorUpdateableFields = ['lastName', 'firstName'];
-
-//   updateableFields.forEach(field => {
-//     if (field in req.body) {
-//       toUpdate[field] = req.body[field];
-//     }
-//   });
-
-//   Messages
-//     // all key/value pairs in toUpdate will be updated -- that's what `$set` does
-//     .findByIdAndUpdate(req.params.id, {$set: toUpdate})
-//     .exec()
-//     .then(() => {
-//       res.status(204).json({message: 'success'});
-//     })
-//     .catch(err => res.status(500).json({message: 'Internal server error'}));
-// });
 
 module.exports = router;

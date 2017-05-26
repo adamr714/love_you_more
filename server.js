@@ -1,26 +1,30 @@
-
+const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
-const messageRouter = require('./messageRouter');
-const cannedRouter = require('./cannedRouter');
-// const userRouter = require('./userRouter');
-
-const {PORT, DATABASE_URL} = require('./config');
 const morgan = require('morgan');
 
+const messageRouter = require('./messageRouter');
+const cannedRouter = require('./cannedRouter');
+const userRouter = require('./userRouter');
+
+// mongoose.Promise = global.Promise;
+
+const {PORT, DATABASE_URL} = require('./config');
+const app = express();
 
 // log the http layer
 app.use(morgan('common'));
 
 app.use(express.static('public'));
-// app.use(express.static('views'));
-
-
 
 app.use('/canned_messages', cannedRouter);
 app.use('/messages', messageRouter);
-// app.use('/users',userRouter);
+app.use('/users', userRouter);
+
+
+// app.use('*', function(req, res) {
+//   return res.status(404).json({message: 'Not Found'});
+// });
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
@@ -52,9 +56,6 @@ function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   });
 }
 
-// like `runServer`, this function also needs to return a promise.
-// `server.close` does not return a promise on its own, so we manually
-// create one.
 function closeServer() {
   return new Promise((resolve, reject) => {
     console.log('Closing server');
@@ -69,8 +70,6 @@ function closeServer() {
   });
 }
 
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
   runServer().catch(err => console.error(err));
 };
