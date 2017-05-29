@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "debug": "babel-node --debug server.js",
     "start": "babel-node server.js",
     "test": "mocha ./test",
     "watch": "babel-watch server.js"
@@ -18,12 +19,12 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-watch": "^2.0.6",
-    "babel": "^6.23.0",
     "babel-runtime": "^6.23.0",
+    "babel-watch": "^2.0.6",
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "express-session": "^1.15.3",
     "mongoose": "^4.9.8",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",

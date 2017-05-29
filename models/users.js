@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-const STATE_ABBREVIATIONS = Object.keys(require('./state-abbreviations'));
-
 const UserSchema = mongoose.Schema({
   username: {
     type: String,
@@ -18,6 +16,7 @@ const UserSchema = mongoose.Schema({
   },
   firstName: {type: String, default: ""},
   lastName: {type: String, default: ""},
+  reference: {type: String, required: true}
   // anniversary: {type: String, default: ""}
 });
 
@@ -26,6 +25,7 @@ UserSchema.methods.apiRepr = function() {
     username: this.username || '',
     firstName: this.firstName || '',
     lastName: this.lastName || '',
+    reference: this.reference || ''
     // anniversary: this.anniversary || ''
   };
 }

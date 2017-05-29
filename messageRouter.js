@@ -12,7 +12,7 @@ const app = express();
 
 //Get
 router.get('/', async (req, res) => {
-  let data = await Messages.find().exec();
+  let data = await Messages.find({delete: false}).exec();
   res.status(200).json(data);
 });
 

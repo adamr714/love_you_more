@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
     return res.status(422).json({message: 'Missing field: username'});
   }
 
-  let {username, password, firstName, lastName} = req.body;
+  let {username, password, firstName, lastName, reference} = req.body;
 
   if (typeof username !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: username'});
@@ -90,6 +90,7 @@ router.post('/', (req, res) => {
           password: hash,
           firstName: firstName,
           lastName: lastName,
+          reference: reference
           // anniversary: anniversary
         })
     })
@@ -111,6 +112,7 @@ router.post('/', (req, res) => {
       return res.status(201).json(user.apiRepr());
     })
     .catch(err => {
+      console.error('Internal server error:' + err);
       res.status(500).json({message: 'Internal server error'})
     });
 });
