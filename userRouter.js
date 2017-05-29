@@ -4,7 +4,7 @@ const jsonParser = require('body-parser').json();
 const passport = require('passport');
 
 const {User} = require('./models/users');
-
+const UserService = require('./service/userService');
 const router = express.Router();
 
 router.use(jsonParser);
@@ -35,6 +35,38 @@ const basicStrategy = new BasicStrategy((username, password, callback) => {
 
 passport.use(basicStrategy);
 router.use(passport.initialize());
+
+
+/* Registration Model
+{
+	"self": {
+		"username":"jdoe2",
+		"password":"123345",
+		"firstName": "John",
+		"lastName":"Doe",
+    "email":"john.doe@gmail.com"
+	},
+	"other": {
+		"username":"janedoe2",
+		"password":"123345",
+		"firstName": "Jane",
+		"lastName":"Doe",
+    "email":"jane.doe@gmail.com"
+	}
+}
+*/
+
+router.post('/register', async (req, res) => {
+  try {
+    let user1 = await UserService.create(req.body.self);
+    let user2 = await UserService.create(req.body.other);
+    // let user2 = await UserService.create(req.body);
+    res.status(201).json(user1);
+
+  } catch (err) {
+    res.status(500).json({message: err});
+  }
+});
 
 router.post('/', (req, res) => {
   if (!req.body) {
