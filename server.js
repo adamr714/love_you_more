@@ -7,15 +7,6 @@ const messageRouter = require('./messageRouter');
 const cannedRouter = require('./cannedRouter');
 const userRouter = require('./userRouter');
 
-const session = require('express-session');
-
-//use session for tracking logins
-app.use(session({
-  secret: 'I Love You More!',
-  resave: true,
-  saveUninitialized: false
-}));
-
 
 // mongoose.Promise = global.Promise;
 
