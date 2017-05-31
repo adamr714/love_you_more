@@ -137,5 +137,6 @@ nav ul li:nth-child(3)::after {
 
 .signupForm {
     min-height: 100%;
+    display: none;
     /*position: absolute;*/
 }
