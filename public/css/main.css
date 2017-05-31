@@ -60,8 +60,8 @@ nav ul li:nth-child(3)::after {
 }
 
 .mainText {
-    margin-top: 30em;
-    margin: 27em 1em 1em 1em;
+    /*margin-top: 30em;
+    margin: 27em 1em 1em 1em;*/
 }
 
 .header {
