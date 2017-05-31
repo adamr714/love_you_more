@@ -46,9 +46,11 @@
 }
 
 /* Mobile defaults */
-.col-3, .col-4, .col-6, .col-12 {
+.col-3, .col-4, .col-5, .col-6, .col-12 {
   width: 100%;
 }
+
+
 
 
 /* Non-mobile, grid */

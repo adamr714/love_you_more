@@ -38,6 +38,19 @@ function verifyUser(userObject) {
     return null;
 }
 
+// let {username, password, firstName, lastName, reference} = userObject;
+
+// function isUserAvailable() {
+//             let userCount = await User
+//                     .find({username})
+//                     .count()
+//                     .exec();
+//             if (userCount > 0) {
+//                 reject("username already exists");
+//                 return;
+//             } 
+// }
+
 function UserService() {
     
     this.create = function(userObject) {
@@ -49,17 +62,17 @@ function UserService() {
             }
 
             //.. Create the user
-            let {username, password, firstName, lastName, reference} = userObject;
+            // let {username, password, firstName, lastName, reference} = userObject;
 
             // check for existing user
-            let userCount = await User
-                    .find({username})
-                    .count()
-                    .exec();
-            if (userCount > 0) {
-                reject("username already exists");
-                return;
-            }
+            // let userCount = await User
+            //         .find({username})
+            //         .count()
+            //         .exec();
+            // if (userCount > 0) {
+            //     reject("username already exists");
+            //     return;
+            // }
 
             let hashPassword = await User.hashPassword(password);
             let newUser = await User
@@ -78,3 +91,4 @@ function UserService() {
 }
 
 module.exports = new UserService();
+// module.exports = new isUserAvailable();
