@@ -20,6 +20,23 @@ const UserSchema = mongoose.Schema({
   // anniversary: {type: String, default: ""}
 });
 
+
+// 	"self": {
+// 		"username":"jdoe2",
+// 		"password":"123345",
+// 		"firstName": "John",
+// 		"lastName":"Doe",
+//     "email":"john.doe@gmail.com"
+// 	},
+// 	"other": {
+// 		"username":"janedoe2",
+// 		"password":"123345",
+// 		"firstName": "Jane",
+// 		"lastName":"Doe",
+//     "email":"jane.doe@gmail.com"
+// 	}
+// }
+
 UserSchema.methods.apiRepr = function() {
   return {
     username: this.username || '',
@@ -29,42 +46,6 @@ UserSchema.methods.apiRepr = function() {
     // anniversary: this.anniversary || ''
   };
 }
-
-// const UserSchema = mongoose.Schema({
-//   username: {type: String, required: true, unique: true},
-//   password: {type: String, required: true},
-//   firstName: {type: String, default: "", required: true},
-//   lastName: {type: String, default: "", required: true},
-//   anniversary: {type: Number, default: ""},
-//   phone: {type: Number, default: ""},
-//   textMessage: {type: Boolean, default: false},
-//   reference : {type: String, required: true}
-// });
-
-// UserSchema.methods.apiRepr = function() {
-//   return {
-//     username: this.username || '',
-//     firstName: this.firstName || '',
-//     lastName: this.lastName || '',
-//     anniversary: this.anniversary || "",
-//     phone: this.phone || "",
-//     textMessage: this.textMessage || ""
-//   };
-// }
-
-// const UserSchmea = mongoose.Schema({
-//     // _id: mongoose.Schema.Types.ObjectId,
-//     userName : {type: String, required: true, unique: true},
-//     userName1Info : {
-//         firstName : {type: String, required: true},
-//         lastName : {type: String, required: true},
-//         email : {type: String, required: true},
-//         phone : type: Number,
-//         textMessage : type: String
-//     },
-//     anniversary : Number,
-//     reference : {type: String, required: true},
-// });
 
 
 UserSchema.methods.validatePassword = function(password) {

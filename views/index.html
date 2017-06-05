@@ -50,16 +50,44 @@
             <row>
               <div class="col-12"> 
                   <ul class="tab-group">
-                    <li class="tab active"><a href="#signup">Sign Up</a></li>
-                    <li class="tab"><a href="#login">Log In</a></li>
+                    <li class="tab active"><a href="#login">Log In</a></li>
+										<li class="tab"><a href="#signup">Sign Up</a></li>
+  
                   </ul>
               </div>
             </row>
 
             <div class="tab-content">
-              <div id="signup">  
-
+                <div id="login">   
+                <h1>Welcome Back!</h1>
+                
                 <form action="/" method="post">
+                
+                  <div class="field-wrap">
+                  <label>
+                    User Name<span class="req">*</span>
+                  </label>
+                  <input type="email"required autocomplete="off"/>
+                </div>
+                
+                <div class="field-wrap">
+                  <label>
+                    Password<span class="req">*</span>
+                  </label>
+                  <input type="password"required autocomplete="off"/>
+                </div>
+                
+                <p class="forgot"><a href="#">Forgot Password?</a></p>
+                
+                <button class="button button-block"/>Log In</button>
+                
+                </form>
+
+              </div>
+	
+	            <div id="signup">  
+
+                <form action="/users" method="post">
 
                 <row>
                   <div class="col-6">
@@ -69,14 +97,14 @@
                       <label>
                         First Name<span class="req">*</span>
                       </label>
-                      <input type="text" required autocomplete="off" />
+                      <input type="text" name="selfFirstName" required autocomplete="off" />
                     </div>
                 
                     <div class="field-wrap">
                       <label>
                         Last Name<span class="req">*</span>
                       </label>
-                      <input type="text"required autocomplete="off"/>
+                      <input type="text" name="selfLastName" required autocomplete="off"/>
                     </div>
                   </div>
 
@@ -84,14 +112,14 @@
                     <label>
                       User Name:<span class="req">*</span>
                     </label>
-                    <input type="email"required autocomplete="off"/>
+                    <input type="text" name="selfUsername" id="selfUserName" required autocomplete="off"/>
                   </div>
 
                   <div class="field-wrap">
                     <label>
                       Email Address<span class="req">*</span>
                     </label>
-                    <input type="email"required autocomplete="off"/>
+                    <input type="email" name="selfEmail" required autocomplete="off"/>
                   </div>
                   </div>
 
@@ -102,14 +130,14 @@
                             <label>
                               First Name<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input type="text"  name="otherFirstName"  required autocomplete="off" />
                           </div>
                       
                           <div class="field-wrap">
                             <label>
                               Last Name<span class="req">*</span>
                             </label>
-                            <input type="text"required autocomplete="off"/>
+                            <input type="text"  name="otherLastName" required autocomplete="off"/>
                           </div>
                         </div>
 
@@ -117,14 +145,14 @@
                           <label>
                             User Name:<span class="req">*</span>
                           </label>
-                          <input type="email"required autocomplete="off"/>
+                          <input type="text"  name="otherUserName" id="otherUserName" required autocomplete="off"/>
                         </div>
 
                         <div class="field-wrap">
                           <label>
                             Email Address<span class="req">*</span>
                           </label>
-                          <input type="email"required autocomplete="off"/>
+                          <input type="email"  name="otherEmail" required autocomplete="off"/>
                         </div>
                     </div>
                 </row>
@@ -158,32 +186,7 @@
                 
               </div>
               
-              <div id="login">   
-                <h1>Welcome Back!</h1>
-                
-                <form action="/" method="post">
-                
-                  <div class="field-wrap">
-                  <label>
-                    User Name<span class="req">*</span>
-                  </label>
-                  <input type="email"required autocomplete="off"/>
-                </div>
-                
-                <div class="field-wrap">
-                  <label>
-                    Password<span class="req">*</span>
-                  </label>
-                  <input type="password"required autocomplete="off"/>
-                </div>
-                
-                <p class="forgot"><a href="#">Forgot Password?</a></p>
-                
-                <button class="button button-block"/>Log In</button>
-                
-                </form>
 
-              </div>
               
             </div><!-- tab-content -->
             
@@ -242,127 +245,140 @@
 				<p class="primaryText">I love You More lets you send a message to your love and it will remain forever to be looked at and shared through the good times and not so good times.  Some sample messages are below, but you can create your own and continue the love story you created.</p>
 				</div>
 			</div>
-		</div>
 
-		<!--<div class="sampleMessages">-->
-		<row>	
-			<div class="col-12">
-			<p class="header">Sample Messages</p>
+			<div class="row">
+				<div class="col-12">
+				<p class="header">Sample Messages</p>	
+				<p class="primaryText">It all starts with a simple, "I Love You," but then it gets harder to come up witht he words that convey your thoughts 
+					or feelings of the moment...it's okay and you're not alone.  Unless you are a professional writer for Hallmark we all have those moments where the best
+					we can do is..."Thanks for taking out the trash...going bowling..."</p>
 
-			<div class="note">
-				<p>I love you to the moon and back.</p>
-				
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Adam
+				<p class="primaryText">Sample Messages are a starting point for you...just a reminder of what can be said for you to expand on or just send as is.  We won't tell.</p>
+
+				<p class="primaryText">Some examples are:</p>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-4">		
+					<div class="note">
+						<p>I love you to the moon and back.</p>
+						
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Adam
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
 					</div>
+				</div>
 
-					<div class="date">
-					April 26, 2017
+				<div class="col-4">
+					<div class="note">
+						<p>I love you always and forever.</p>
+
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Traci
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+				<div class="note">
+					<p>I love you more.</p>
+					<div class="noteFooter">
+						<div class="name">
+						&ndash; Jude
+						</div>
+
+						<div class="date">
+						April 28, 2017
+					</div>
+					</div>
+				</div>
+				</div>	
+
+			</div>
+
+			<div class="row spacer">
+				<div class="col-4">
+					<div class="note">
+						<p>I love you more than the iPad</p>
+					
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Logan
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="note">
+						<p>I Miss You More!!</p>
+					
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Logan
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="note">
+						<p>I love you enough to put up with your parents.</p>
+
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; 
+							</div>
+
+							<div class="date">
+							April 27, 2017
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="note">
-				<p>I love you always and forever.</p>
-
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Traci
-					</div>
-
-					<div class="date">
-					April 26, 2017
-					</div>
-				</div>
-			</div>
-
-			<div class="note">
-				<p>I love you more.</p>
-
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Jude
-					</div>
-
-					<div class="date">
-					April 28, 2017
-				</div>
-				</div>
-			</div>
-
-			<div class="note">
-				<p>I love you more than the iPad</p>
-			
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Logan
-					</div>
-
-					<div class="date">
-					April 26, 2017
+			<div class="row spacer">
+				<div class="col-4">
+					<div class="note"><p>I love you more than poker night with the guys.</p>
+						<div class="noteFooter">
+							<div class="name">&ndash; Henry</div>
+							<div class="date">April 27, 2017</div>
+						</div>
 					</div>
 				</div>
 
-			</div>
-
-			<div class="note">
-				<p>I miss you.</p>
-
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Riley
-					</div>
-
-					<div class="date">
-					April 27, 2017
+				<div class="col-4">
+					<div class="note"><p>You are my Lobster.</p>
+						<div class="noteFooter">
+							<div class="name">&ndash; Phoebe</div>
+							<div class="date">April 26, 2017</div>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="note">
-				<p>I love you enough to put up with your parents.</p>
-
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; 
-					</div>
-
-					<div class="date">
-					April 27, 2017
-					</div>
-				</div>
-			</div>
-
-			<div class="note">
-				<p>I love you more than poker night with the guys.</p>
-
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Henry
-					</div>
-
-					<div class="date">
-					April 27, 2017
-					</div>
-				</div>
-			</div>
-
-			<div class="note">
-				<p>You are my lobster.</p>
-
-				<div class="noteFooter">
-					<div class="name">
-					&ndash; Phoebe
-					</div>
-
-					<div class="date">
-					April 26, 2017
-					</div>
-				</div>
-			</div>			
-		</div>
-		</row>
+			</div>	
 
 	
 
@@ -376,9 +392,10 @@
 	<script type="text/javascript"src='http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js'></script>
 	<script type="text/javascript"src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>
 	<script type="text/javascript"src="js/slider.js"></script>
+	<script type="text/javascript" src="js/http.js"></script>	
 	<script type="text/javascript"src="js/app.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>	
-
+	
 
 
 </body>

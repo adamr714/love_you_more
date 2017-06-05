@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/float-grid.css">	
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
 
 	<!-- Slider CSS Information -->
 	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'>
@@ -30,28 +31,169 @@
 
 				<nav>
 					<ul>
-						<li>About</li>
-						<li>Sample Messages</li>
-						<li>Sign Up</li>
+						<li>Home</li>
 					</ul>
 				</nav>
 
-				<!--<button id="loginform" class="signup">Sign in / <br>Demo Account</button>-->
-				<p class="signup"><a href="javascript:toggleDiv('myContent');">Toggle Button</a></p>
+				<button id="loginform" class="signup">Log Out</button>
+				<!--<p class="signup"><a href="javascript:toggleDiv('myContent');">Toggle Button</a></p>-->
 		</div>
 	</header>
 
-	<main>
 
+
+	<main>	
+		<div class="row">
+			<div class="col-12">
+				<p class="header">Welcome Back #{name}</p>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-6">
+				<form id="messageForm"action="/messages" method="post"> 
+				<select id="cannedMessageDisplay"></select>				
+				<input type="date" hidden>
+				<input type="time" hidden>					
+				</form>	
+
+				<textarea form="messageForm"></textarea>
+			</div>
+
+			<div class="col-3">
+				<p>Messages Sent</p>
+			</div>
+
+			<div class="col-3">
+				<p>Messages Recieved</p>
+			</div>
+		</div>
+
+		<hr />
+
+			<div class="row">
+
+				<div class="col-4">		
+					<div class="note">
+						<p>I love you to the moon and back.</p>
+						
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Adam
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="note">
+						<p>I love you always and forever.</p>
+
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Traci
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+				<div class="note">
+					<p>I love you more.</p>
+					<div class="noteFooter">
+						<div class="name">
+						&ndash; Jude
+						</div>
+
+						<div class="date">
+						April 28, 2017
+					</div>
+					</div>
+				</div>
+				</div>	
+
+			</div>
+
+			<div class="row spacer">
+				<div class="col-4">
+					<div class="note">
+						<p>I love you more than the iPad</p>
+					
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Logan
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="note">
+						<p>I Miss You More!!</p>
+					
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; Logan
+							</div>
+
+							<div class="date">
+							April 26, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="note">
+						<p>I love you enough to put up with your parents.</p>
+
+						<div class="noteFooter">
+							<div class="name">
+							&ndash; 
+							</div>
+
+							<div class="date">
+							April 27, 2017
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row spacer">
+				<div class="col-4">
+					<div class="note"><p>I love you more than poker night with the guys.</p>
+						<div class="noteFooter">
+							<div class="name">&ndash; Henry</div>
+							<div class="date">April 27, 2017</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="note"><p>You are my Lobster.</p>
+						<div class="noteFooter">
+							<div class="name">&ndash; Phoebe</div>
+							<div class="date">April 26, 2017</div>
+						</div>
+					</div>
+				</div>
+			</div>	
 
 	
-
-		
-
-
-
-
-		
 
 
 	</main>
@@ -60,11 +202,13 @@
 	<!-- <script type="text/javascript" src="js/app.js"></script>	 -->
 
 	<!-- Slideshow JS -->
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>
-	<script src="js/slider.js"></script>
-	<script src="js/app.js"</script>
-
+	<script type="text/javascript"src='http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js'></script>
+	<script type="text/javascript"src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>
+	<script type="text/javascript"src="js/slider.js"></script>
+	<script type="text/javascript" src="js/http.js"></script>	
+	<script type="text/javascript"src="js/app.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>	
+	
 
 
 </body>

@@ -58,15 +58,35 @@ router.use(passport.initialize());
 
 router.post('/register', async (req, res) => {
   try {
+    req.body.self.reference = "ref";
+    req.body.other.reference = "ref";
+    let user1Available = await UserService.isUserAvailable(req.body.self.username); 
+    let user2Available = await UserService.isUserAvailable(req.body.other.username); 
+
+      if (!user1Available || !user2Available || req.body.self.username==req.body.other.username) { 
+        res.status(400).json({message: "Ensure users are available and not the same"}); 
+        return; 
+      }
+
     let user1 = await UserService.create(req.body.self);
     let user2 = await UserService.create(req.body.other);
     // let user2 = await UserService.create(req.body);
-    res.status(201).json(user1);
+    res.status(201).json({message: 'Created'});
 
   } catch (err) {
     res.status(500).json({message: err});
   }
 });
+
+router.get('/available/:username', async (req, res) => {
+  try {
+    let userAvailable = await UserService.isUserAvailable(req.params.username);
+    res.status(200).json(userAvailable);
+  } catch (err) {
+    res.status(500).json({message: err});
+  }
+});
+
 
 router.post('/', (req, res) => {
   if (!req.body) {
@@ -77,7 +97,7 @@ router.post('/', (req, res) => {
     return res.status(422).json({message: 'Missing field: username'});
   }
 
-  let {username, password, firstName, lastName, reference} = req.body;
+  // let {username, password, firstName, lastName, reference} = req.body;
 
   if (typeof username !== 'string') {
     return res.status(422).json({message: 'Incorrect field type: username'});

@@ -8,7 +8,7 @@ const cannedRouter = require('./cannedRouter');
 const userRouter = require('./userRouter');
 
 
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
 const app = express();
@@ -21,6 +21,7 @@ app.use(express.static('public'));
 app.use('/canned_messages', cannedRouter);
 app.use('/messages', messageRouter);
 app.use('/users', userRouter);
+app.use('/register', userRouter);
 
 
 // app.use('*', function(req, res) {

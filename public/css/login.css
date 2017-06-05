@@ -1,7 +1,5 @@
 /*http://codepen.io/ehermanson/pen/KwKWEv*/
 
-/*http://codepen.io/ehermanson/pen/KwKWEv*/
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -31,7 +29,7 @@ a:hover {
   /* background-color: #fff; */
   padding: 40px;
   max-width: 1240px;
-  margin: 40px auto;
+  margin: auto;
   /* border: 1px solid crimson; */
   /* border-radius: 4px; */
   /* box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); */
@@ -112,7 +110,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 
 input, textarea {
@@ -127,6 +125,7 @@ input, textarea {
   color: #000;
   border-radius: 0;
   transition: border-color .25s ease, box-shadow .25s ease;
+  background-color: white;
 }
 input:focus, textarea:focus {
   outline: 0;
@@ -140,7 +139,7 @@ textarea {
 
 .field-wrap {
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 .top-row:after {

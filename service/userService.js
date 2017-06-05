@@ -38,18 +38,16 @@ function verifyUser(userObject) {
     return null;
 }
 
-// let {username, password, firstName, lastName, reference} = userObject;
-
-// function isUserAvailable() {
-//             let userCount = await User
-//                     .find({username})
-//                     .count()
-//                     .exec();
-//             if (userCount > 0) {
-//                 reject("username already exists");
-//                 return;
-//             } 
-// }
+async function isUserAvailable() {
+            let userCount = await User
+                    .find({username})
+                    .count()
+                    .exec();
+            if (userCount > 0) {
+                reject("username already exists");
+                return;
+            } 
+}
 
 function UserService() {
     
@@ -62,17 +60,12 @@ function UserService() {
             }
 
             //.. Create the user
-            // let {username, password, firstName, lastName, reference} = userObject;
+            let {username, password, firstName, lastName, reference} = userObject;
 
-            // check for existing user
-            // let userCount = await User
-            //         .find({username})
-            //         .count()
-            //         .exec();
-            // if (userCount > 0) {
-            //     reject("username already exists");
-            //     return;
-            // }
+            let isUserAvailable = await this.isUserAvailable(username);
+            if (!isUserAvailable) {
+                reject("username already exists");
+            }
 
             let hashPassword = await User.hashPassword(password);
             let newUser = await User
@@ -87,8 +80,20 @@ function UserService() {
             resolve(newUser);
         });
     }
-
+    this.isUserAvailable = function(username) {
+        return new Promise(async (resolve,reject) => {
+            let userCount = await User
+                        .find({username})
+                        .count()
+                        .exec();
+                if (userCount > 0) {
+                    resolve(false);
+                    return;
+                } 
+                resolve(true);
+        });
+    }
 }
 
 module.exports = new UserService();
-// module.exports = new isUserAvailable();
+
