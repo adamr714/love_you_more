@@ -16,12 +16,12 @@
 	<!-- Slider CSS Information -->
 	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'>
 	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'>
-	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto+Condensed:100'>
-
+	
       <link rel="stylesheet" href="css/style.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/characterCreation.css"> -->
 	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<script src="https://use.fontawesome.com/3e1fcce68b.js"></script>
 </head>
 <body>
@@ -61,20 +61,20 @@
                 <div id="login">   
                 <h1>Welcome Back!</h1>
                 
-                <form action="/" method="post">
+                <form action="/" method="post" id="login">
                 
                   <div class="field-wrap">
                   <label>
                     User Name<span class="req">*</span>
                   </label>
-                  <input type="email"required autocomplete="off"/>
+                  <input type="text" autocomplete="off"/>
                 </div>
                 
                 <div class="field-wrap">
                   <label>
                     Password<span class="req">*</span>
                   </label>
-                  <input type="password"required autocomplete="off"/>
+                  <input type="password" autocomplete="off"/>
                 </div>
                 
                 <p class="forgot"><a href="#">Forgot Password?</a></p>
@@ -87,7 +87,7 @@
 	
 	            <div id="signup">  
 
-                <form action="/users" method="post">
+                <form action="/users" method="post" id="register">
 
                 <row>
                   <div class="col-6">
@@ -97,14 +97,14 @@
                       <label>
                         First Name<span class="req">*</span>
                       </label>
-                      <input type="text" name="selfFirstName" required autocomplete="off" />
+                      <input type="text" name="selfFirstName" id="selfFirstName" autocomplete="off" />
                     </div>
                 
                     <div class="field-wrap">
                       <label>
                         Last Name<span class="req">*</span>
                       </label>
-                      <input type="text" name="selfLastName" required autocomplete="off"/>
+                      <input type="text" name="selfLastName" class="lastName" id="selfLastName" autocomplete="off"/>
                     </div>
                   </div>
 
@@ -112,14 +112,14 @@
                     <label>
                       User Name:<span class="req">*</span>
                     </label>
-                    <input type="text" name="selfUsername" id="selfUserName" required autocomplete="off"/>
+                    <input type="text" name="selfUsername" id="selfUserName"  autocomplete="off"/>
                   </div>
 
                   <div class="field-wrap">
                     <label>
                       Email Address<span class="req">*</span>
                     </label>
-                    <input type="email" name="selfEmail" required autocomplete="off"/>
+                    <input type="email" name="selfEmail" id="selfEmail"  autocomplete="off"/>
                   </div>
                   </div>
 
@@ -130,14 +130,14 @@
                             <label>
                               First Name<span class="req">*</span>
                             </label>
-                            <input type="text"  name="otherFirstName"  required autocomplete="off" />
+                            <input type="text"  name="otherFirstName" id="otherFirstName"   autocomplete="off" />
                           </div>
                       
                           <div class="field-wrap">
                             <label>
                               Last Name<span class="req">*</span>
                             </label>
-                            <input type="text"  name="otherLastName" required autocomplete="off"/>
+                            <input type="text"  name="otherLastName" class="lastName" id="otherLastName"  autocomplete="off"/>
                           </div>
                         </div>
 
@@ -145,14 +145,14 @@
                           <label>
                             User Name:<span class="req">*</span>
                           </label>
-                          <input type="text"  name="otherUserName" id="otherUserName" required autocomplete="off"/>
+                          <input type="text"  name="otherUserName" id="otherUserName"  autocomplete="off"/>
                         </div>
 
                         <div class="field-wrap">
                           <label>
                             Email Address<span class="req">*</span>
                           </label>
-                          <input type="email"  name="otherEmail" required autocomplete="off"/>
+                          <input type="email"  name="otherEmail" id="otherEmail"  autocomplete="off"/>
                         </div>
                     </div>
                 </row>
@@ -164,14 +164,14 @@
                         <label>
                           Set A Password<span class="req">*</span>
                         </label>
-                        <input type="password"required autocomplete="off"/>
+                        <input type="password" name="password" id="password" autocomplete="off"/>
                       </div>
 
                       <div class="field-wrap">
                         <label>
                           Confirm Password<span class="req">*</span>
                         </label>
-                        <input type="password"required autocomplete="off"/>
+                        <input type="password" id="passwordConfirm" autocomplete="off"/>
                       </div>
                       
                       <div>
@@ -391,7 +391,7 @@
 	<!-- Slideshow JS -->
 	<script type="text/javascript"src='http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js'></script>
 	<script type="text/javascript"src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>
-	<script type="text/javascript"src="js/slider.js"></script>
+	<!--<script type="text/javascript"src="js/slider.js"></script>-->
 	<script type="text/javascript" src="js/http.js"></script>	
 	<script type="text/javascript"src="js/app.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>	

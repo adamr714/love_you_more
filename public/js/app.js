@@ -1,8 +1,5 @@
 
-var cannedMessages
-var cannedMessagesData
-
-
+//variables
 function isUserAvailable(userName) {
     if (username == null || username.length() == 0) {
         return;
@@ -12,16 +9,11 @@ function isUserAvailable(userName) {
     });
 };
 
-// Canned Messages
-		http.get("/canned_messages",function(data){
-			cannedMessages = data;
-		   for (var i = 0; i < cannedMessages.length; i++) {
-		        cannedMessagesData+= "<option value='" + i + "'>" +
-		          cannedMessages[i].name + "</option>";
-			}
-	      	$("#cannedMessageDisplay").html(cannedMessagesData);
-	    });
-
+function userRegistration(registration) {
+    console.log(data);
+    http.post("users/register/" + registration, function(data){
+    });
+} 
 
 
 
@@ -43,4 +35,43 @@ $(document).ready(function() {
         isUserAvailable(otherUser);
     });
 
+    // Canned Messages
+		http.get("canned_messages/", function(data){
+            var cannedMessages;
+            var cannedMessagesData;
+			cannedMessages = data;
+            // console.log(cannedMessages);
+		    for (var i = 0; i < cannedMessages.length; i++) {
+		        cannedMessagesData+= "<option value='" + i + "'>" +
+		          cannedMessages[i].short + "</option>";
+			}
+	      	$("#cannedMessageDisplay").html(cannedMessagesData);
+	    });
+
+    $(document).on('submit', '#register', function(event) {
+        //   return false;
+        event.preventDefault();
+        var registration = {
+        	"self": {
+		        "username": $('#selfUserName').val(),
+		        "password": $('#selfPassword').val(),
+		        "firstName": $('#selfFirstName').val(),
+		        "lastName": $('#selfLastName').val(),
+                "email": $('#selfEmail').val()
+	        },
+            "other": {
+                "username" : $('#otherUserName').val(),
+                "password" : $('#otherPassword').val(),
+                "firstName" : $('#otherFirstName').val(),
+                "lastName" : $('#otherLastName').val(),
+                "email" : $('#otherEmail').val()
+        	}
+        };
+            console.log(registration);
+            // userRegistration(registration);
+    });
 });
+
+
+
+

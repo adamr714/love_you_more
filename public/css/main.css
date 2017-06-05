@@ -149,3 +149,17 @@ nav ul li:nth-child(3)::after {
 .spacer {
     margin-top: 1em;
 }
+
+@media all and (max-width: 504px) and (min-width: 320px) {
+    .col-4, .col-6 {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .top-row > div {
+         width: 100%;
+         margin-right: 0%;
+}
+}
+
+
