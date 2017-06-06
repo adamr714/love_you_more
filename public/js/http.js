@@ -20,7 +20,8 @@ var http = {
 		$.ajax({
 		  dataType: "json",
 		  url: url,
-		  data: data,
+		  data: $.toJSON(data),
+		  contentType:'application/json',
 		  method: 'POST',
 		  success: function(data, textStatus, jqXHR) {
 		  	if (textStatus==='success') {

@@ -15,14 +15,14 @@ const app = express();
 
 // log the http layer
 app.use(morgan('common'));
+app.use(bodyParser.json());
+
 
 app.use(express.static('public'));
 
 app.use('/canned_messages', cannedRouter);
 app.use('/messages', messageRouter);
 app.use('/users', userRouter);
-app.use('/register', userRouter);
-
 
 // app.use('*', function(req, res) {
 //   return res.status(404).json({message: 'Not Found'});

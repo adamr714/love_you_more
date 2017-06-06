@@ -8,10 +8,8 @@ function myFunction() {
     }
 }
 
-
-
 function isUserAvailable(userName) {
-    if (username == null || username.length() == 0) {
+    if (userName == null || userName.length == 0) {
         return;
     }
     http.get("users/available/" + userName,function(data){
@@ -20,8 +18,8 @@ function isUserAvailable(userName) {
 };
 
 function userRegistration(registration) {
-    console.log(data);
-    http.post("users/register/" + registration, function(data){
+    console.log(registration);
+    http.post("users/register/", registration, function(data){
     });
 } 
 
@@ -58,27 +56,28 @@ $(document).ready(function() {
 	      	$("#cannedMessageDisplay").html(cannedMessagesData);
 	    });
 
+    //Login 
     $(document).on('submit', '#register', function(event) {
         //   return false;
         event.preventDefault();
         var registration = {
         	"self": {
 		        "username": $('#selfUserName').val(),
-		        "password": $('#selfPassword').val(),
+		        "password": $('#password').val(),
 		        "firstName": $('#selfFirstName').val(),
 		        "lastName": $('#selfLastName').val(),
                 "email": $('#selfEmail').val()
 	        },
             "other": {
                 "username" : $('#otherUserName').val(),
-                "password" : $('#otherPassword').val(),
+                "password" : $('#password').val(),
                 "firstName" : $('#otherFirstName').val(),
                 "lastName" : $('#otherLastName').val(),
                 "email" : $('#otherEmail').val()
         	}
         };
             console.log(registration);
-            // userRegistration(registration);
+            userRegistration(registration);
     });
 });
 
