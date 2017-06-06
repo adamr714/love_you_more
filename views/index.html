@@ -27,17 +27,25 @@
 <body>
 	<header>
 		<div class="row">
-				<p class="logo">I <i class="fa fa-heart" aria-hidden="true"></i> You More</p>
+				<p class="logo" id="top">I <i class="fa fa-heart" aria-hidden="true"></i> You More</p>
 
-				<nav>
+				<!--<nav>
 					<ul>
 						<li>About</li>
 						<li>Sample Messages</li>
 						<li>Sign Up</li>
 					</ul>
-				</nav>
+				</nav>-->
 
-				<button id="loginform" class="signup">Sign in / <br>Demo Account</button>
+				<div class="topnav" id="myTopnav">
+						<a href="#"></a>
+						<a href="#about">About</a>
+						<a href="#sample">Sample Messages</a>
+						<a href="#" id="loginform"> Log In / Sign Up</a>						
+						<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+				</div>
+
+				<!--<button id="loginform" class="signup">Sign in / <br>Demo Account</button>-->
 				<!--<p class="signup"><a href="javascript:toggleDiv('myContent');">Toggle Button</a></p>-->
 		</div>
 	</header>
@@ -47,7 +55,7 @@
 		<div id="signUpForm" class="signupForm">
 
 			<div class="form">
-            <row>
+            <div class="row">
               <div class="col-12"> 
                   <ul class="tab-group">
                     <li class="tab active"><a href="#login">Log In</a></li>
@@ -55,32 +63,42 @@
   
                   </ul>
               </div>
-            </row>
+            </div>
 
             <div class="tab-content">
                 <div id="login">   
                 <h1>Welcome Back!</h1>
                 
                 <form action="/" method="post" id="login">
-                
-                  <div class="field-wrap">
-                  <label>
-                    User Name<span class="req">*</span>
-                  </label>
-                  <input type="text" autocomplete="off"/>
+                <div class="row">
+										<div class="col-12">	
+											<div class="field-wrap">
+												<label>
+													User Name<span class="req">*</span>
+												</label>
+												<input type="text" name="usernameLogIn" id="usernameLogIn" autocomplete="off"/>
+											</div>
+										</div>
                 </div>
+
+								<div class="row">	
+									<div class="col-12">
+										<div class="field-wrap">
+											<label>
+												Password<span class="req">*</span>
+											</label>
+											<input type="password" name="password" id="passwordLogIn" autocomplete="off"/>
+										</div>
+									</div>
+								</div>
                 
-                <div class="field-wrap">
-                  <label>
-                    Password<span class="req">*</span>
-                  </label>
-                  <input type="password" autocomplete="off"/>
-                </div>
-                
-                <p class="forgot"><a href="#">Forgot Password?</a></p>
-                
-                <button class="button button-block"/>Log In</button>
-                
+                <!--<p class="forgot"><a href="#">Forgot Password?</a></p>-->
+                <div class="row log_in">
+									<div class="col-12">
+                		<button class="button button-block button_text"/>Log In</button>
+									</div>
+								</div>
+
                 </form>
 
               </div>
@@ -89,7 +107,7 @@
 
                 <form action="/users" method="post" id="register">
 
-                <row>
+                <div class="row">
                   <div class="col-6">
                   <h2>Your Information</h2>
                   <div class="top-row">
@@ -155,7 +173,7 @@
                           <input type="email"  name="otherEmail" id="otherEmail"  autocomplete="off"/>
                         </div>
                     </div>
-                </row>
+                </div>
 
                 <div class="row">
                   <div class="col-12">
@@ -174,7 +192,7 @@
                         <input type="password" id="passwordConfirm" autocomplete="off"/>
                       </div>
                       
-                      <div>
+                      <div class="submit">
                         <div class="col-12">
                           <button type="submit" class="button button-block"/>Get Started</button>
                         </div>
@@ -235,7 +253,7 @@
 
 			<div class="row">
 				<div class="col-12">
-				<p class="header">Why I ♥ U Matters</p>	
+				<p class="header" id="about">Why I ♥ U Matters</p>	
 				<p class="primaryText">When you fall in love, you think everything will be easy – love conquers all.  The endorphins are flowing and everything is amazing</p>
 
 				<p class="primaryText">But, in time you realize no mater how strong the love is, real love takes a LOT of work and as time goes on there are a lot of other things demanding your attention – kids, work, daily chores…it is easy to forget the small things like sending an, “I love you more” note.</p>
@@ -243,12 +261,15 @@
 				<p class="primaryText">That’s where this site comes in.  Take a moment and send a not to your special someone to remind them that no matter what is happening, the original love you both felt is still there and stronger than ever…it has just evolved into something even better.  </p>
 
 				<p class="primaryText">I love You More lets you send a message to your love and it will remain forever to be looked at and shared through the good times and not so good times.  Some sample messages are below, but you can create your own and continue the love story you created.</p>
+
+
+							  <p class="right"><a href="#top">Top</a></p>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-12">
-				<p class="header">Sample Messages</p>	
+				<p class="header" id="sample">Sample Messages</p>	
 				<p class="primaryText">It all starts with a simple, "I Love You," but then it gets harder to come up witht he words that convey your thoughts 
 					or feelings of the moment...it's okay and you're not alone.  Unless you are a professional writer for Hallmark we all have those moments where the best
 					we can do is..."Thanks for taking out the trash...going bowling..."</p>
@@ -378,6 +399,7 @@
 						</div>
 					</div>
 				</div>
+							  <p class="right"><a href="#top">Top</a></p>
 			</div>	
 
 	

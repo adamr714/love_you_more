@@ -17,7 +17,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #1ab188;
+  color: crimson;
   transition: .5s ease;
 }
 a:hover {
@@ -187,7 +187,7 @@ textarea {
 }
 
 
-@media all and (max-width: 504px) and (min-width: 320px) {
+@media all and (max-width: 748px) and (min-width: 320px) {
     .col-4, .col-6 {
         width: 100%;
         margin-bottom: 1em;
@@ -201,7 +201,25 @@ textarea {
     .lastName {
         margin-bottom: 1em;
     }
+
+    h2 {
+      margin-top: -.5em;
+    }
+
+    .form {
+      padding: 0px;
+      padding-top: 1em;
+    }
+
 }
 
 
+.submit {
+    width: 100%;
+    margin-left: -.2em;
+    margin-bottom: 1em;
+}
 
+.col-12 {
+    margin-bottom: 1em;
+}
