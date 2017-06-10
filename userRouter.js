@@ -87,6 +87,47 @@ router.get('/available/:username', async (req, res) => {
   }
 });
 
+router.post('/login', (req,res) => {
+  if (!req.body) {
+    return res.status(400).json({message: 'No request body'});
+  }
+
+  if (!('username' in req.body)) {
+    return res.status(422).json({message: 'Missing field: username'});
+  }
+
+  let {username, password} = req.body;
+
+  if (typeof username !== 'string') {
+    return res.status(422).json({message: 'Incorrect field type: username'});
+  }
+
+  username = username.trim();
+
+  if (username === '') {
+    return res.status(422).json({message: 'Incorrect field length: username'});
+  }
+
+  if (!(password)) {
+    return res.status(422).json({message: 'Missing field: password'});
+  }
+
+  if (typeof password !== 'string') {
+    return res.status(422).json({message: 'Incorrect field type: password'});
+  }
+
+  password = password.trim();
+
+  if (password === '') {
+    return res.status(422).json({message: 'Incorrect field length: password'});
+  }
+
+// if user is able to login Status 200 else status 400
+
+   passport.authenticate('basic', {session: false}),
+   (req, res) => res.json({User: req.user.apiRepr()})
+});
+
 
 router.post('/', (req, res) => {
   if (!req.body) {
@@ -181,6 +222,8 @@ router.get('/me',
   passport.authenticate('basic', {session: false}),
   (req, res) => res.json({User: req.user.apiRepr()})
 );
+
+
 
 
 module.exports = router;

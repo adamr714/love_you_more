@@ -25,7 +25,7 @@ function userRegistration(registration) {
 
 function userLogin(login) {
     console.log(login);
-    http.post("users", login, function(data) {
+    http.post("users/login", login, function(data) {
     });
 }
 
@@ -87,8 +87,8 @@ $(document).ready(function() {
     $(document).on('submit', '#login', function(event) {
         event.preventDefault();
         var login = {
-		        "usernameLogIn": $('#usernameLogIn').val(),
-		        "passwordLogIn": $('#passwordLogIn').val(),
+		        "username": $('#usernameLogIn').val(),
+		        "password": $('#passwordLogIn').val(),
         };
             console.log(login);
             userLogin(login);
