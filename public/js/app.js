@@ -23,7 +23,11 @@ function userRegistration(registration) {
     });
 } 
 
-
+function userLogin(login) {
+    console.log(login);
+    http.post("users", login, function(data) {
+    });
+}
 
 
 
@@ -79,6 +83,16 @@ $(document).ready(function() {
             console.log(registration);
             userRegistration(registration);
     });
+
+    $(document).on('submit', '#login', function(event) {
+        event.preventDefault();
+        var login = {
+		        "usernameLogIn": $('#usernameLogIn').val(),
+		        "passwordLogIn": $('#passwordLogIn').val(),
+        };
+            console.log(login);
+            userLogin(login);
+    });        
 });
 
 
@@ -119,6 +133,5 @@ $('a[href*="#"]')
       }
     }
   });
-
 
 
