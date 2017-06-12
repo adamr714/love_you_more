@@ -9,28 +9,23 @@ const router = express.Router();
 
 router.use(jsonParser);
 
-
-// NB: at time of writing, passport uses callbacks, not promises
-const basicStrategy = new BasicStrategy((username, password, callback) => {
-  let user;
-  User
-    .findOne({username: username})
-    .exec()
-    .then(_user => {
-      user = _user;
-      if (!user) {
-        return callback(null, false, {message: 'Incorrect username'});
-      }
-      return user.validatePassword(password);
-    })
-    .then(isValid => {
-      if (!isValid) {
-        return callback(null, false, {message: 'Incorrect password'});
-      }
-      else {
-        return callback(null, user)
-      }
-    });
+const basicStrategy = new BasicStrategy(async (username, password, callback) => {
+  try {
+    let user = await User.findOne({username: username}).exec();
+    if (!user) {
+      return callback(null, false, {message: 'Incorrect username'});
+    }
+    let isValid= await user.validatePassword(password);
+    if (!isValid) {
+      return callback(null, false, {message: 'Incorrect password'});
+    }
+    else {
+      return callback(null, user)
+    }
+  } catch (err) {
+    console.error(err);
+    return callback(null, false, {message: 'Server Error'});
+  }
 });
 
 passport.use(basicStrategy);
@@ -55,6 +50,11 @@ router.use(passport.initialize());
 	}
 }
 */
+
+router.get('/profile', passport.authenticate('basic', {session: false}), async (req,res) => {
+  res.status(200).json({message: "WOO HOO YOU ARE AUTHORIZED!!!!"}); 
+})
+
 
 router.post('/register', async (req, res) => {
   try {
@@ -87,20 +87,22 @@ router.get('/available/:username', async (req, res) => {
   }
 });
 
-router.post('/login', (req,res) => {
-  if (!req.body) {
-    return res.status(400).json({message: 'No request body'});
-  }
+router.post('/login', 
+  passport.authenticate('basic', {session: false}),
+  (req,res) => {
+    if (!req.body) {
+      return res.status(400).json({message: 'No request body'});
+    }
 
-  if (!('username' in req.body)) {
-    return res.status(422).json({message: 'Missing field: username'});
-  }
+    if (!('username' in req.body)) {
+      return res.status(422).json({message: 'Missing field: username'});
+    }
 
-  let {username, password} = req.body;
+    let {username, password} = req.body;
 
-  if (typeof username !== 'string') {
-    return res.status(422).json({message: 'Incorrect field type: username'});
-  }
+    if (typeof username !== 'string') {
+      return res.status(422).json({message: 'Incorrect field type: username'});
+    }
 
   username = username.trim();
 

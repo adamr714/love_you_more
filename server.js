@@ -37,7 +37,8 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/views/login.html');
 });
 
-app.get('/myprofile', (req, res) => {
+app.get('/myprofile', 
+  (req, res) => {
   res.sendFile(__dirname + '/views/myprofile.html');
 });
 

@@ -23,6 +23,9 @@ var http = {
 		  data: $.toJSON(data),
 		  contentType:'application/json',
 		  method: 'POST',
+		  beforeSend: function (xhr) {
+  		  xhr.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
+		  },
 		  success: function(data, textStatus, jqXHR) {
 		  	if (textStatus==='success') {
 		  		callback(data);
