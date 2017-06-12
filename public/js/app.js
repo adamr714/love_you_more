@@ -23,9 +23,11 @@ function userRegistration(registration) {
     });
 } 
 
-function userLogin(login) {
-    console.log(login);
+function userLogin(username, password) {
+    console.log("logging in " + username);
+    http.setCredentials(username, password);
     http.post("users/login", login, function(data) {
+        alert('logged in');
     });
 }
 
@@ -84,14 +86,9 @@ $(document).ready(function() {
             userRegistration(registration);
     });
 
-    $(document).on('submit', '#login', function(event) {
+    $('#login').on('submit', function(event) {
         event.preventDefault();
-        var login = {
-		        "username": $('#usernameLogIn').val(),
-		        "password": $('#passwordLogIn').val(),
-        };
-            console.log(login);
-            userLogin(login);
+        userLogin($('#usernameLogIn').val(), $('#passwordLogIn').val());
     });        
 });
 
