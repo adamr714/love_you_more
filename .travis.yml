@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: GshBYzetLaEjuBoKy2XOO62lmKaHJCZIdgEzR9dAjM6Ukfq0NVPK514pCfxZ5xho3IikbaCLl+xWznOFXrDxAY7Cm1perT+JvQtXqjiM1w1YcrabCLjZXVGTDK3K8AzAeVOuiTO9gWzFs0wlTRAFlHp0LnyZYJsottxOHhehQJ5tjoS+Z7fwMn3leCkbxR4yF24gXfh/cvBBRAc2bgf8TIsELlpSQMjh+VBpW2odeFL6AMFp7taVTJvt1cAeylI01BPkCy7RiOURw7SbYa3y5YbuqrFoq/5GwI8zpP6lfXmnwtHePjPYFZuQ/OOpQ7ID3kOwCTKGuzXROlpE7vWUd8hnQsvtrkVeXV5VF8qqKj9rceNk0x+MzYTMkA3+pgGJNPm8Jagugls+fQ6Uhr3AvWpT+ELR7vJuBSYx0MB1SCh6W4U+Fiv11kXlA9jxnprjUilrjmYlzif9zCNmRsLIm/k9snxM+/d2ilBGp/G7a7SAgs7XYgb+LiPv6Y9wxc6TZ3D6dv7mrwFGhZIjQRWRxdHBeqn2r3bhiJmehtFnyE6WevJRZfVcuuMDlKAAhfPRSJMhioKAz8I7VrTvlerqLNZBsAsok1Qh6B8/J0dm7b0mMNsjB2s+xQELA0Wv/pEaWQ/2LiS65gdV0tedCoiVV2ok930g/TxtcpdtWdoq/Zs=
+  app: iloveyoumore
+  on:
+    repo: adamr714/love_you_more
