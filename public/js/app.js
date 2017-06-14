@@ -8,17 +8,20 @@ function myFunction() {
     }
 }
 
-function isUserAvailable(userName) {
+
+
+function isUserAvailable(userNameElement) {
+    var userName = $(userNameElement).val();
     if (userName == null || userName.length == 0) {
         return;
     }
     http.get("users/available/" + userName,function(data){
     console.log(data);
         if (data == true) {
-            $('.check').fadeToggle( "slow", "linear" );
+            $(userNameElement).parent().children('.check').fadeIn( "slow", "linear" );
         //  alert('Username is available');   
         } else {
-            $('.circle').fadeToggle( "slow", "linear" );
+           $(userNameElement).parent().children('.circle').fadeIn( "slow", "linear" );
         }
     });
 };
@@ -38,22 +41,21 @@ function userLogin(username, password) {
     });
 }
 
-
-
 $(document).ready(function() {
     $('#loginform').on('click', function() {
         console.log('Clicked'); 
         $( "#signUpForm" ).fadeToggle( "slow", "linear" );
     });
 
-    $('#selfUserName').on('blur', function() {
-        var selfUser = $('#selfUserName').val();
-        isUserAvailable(selfUser);
+    // Sets Value
+    $('#selfUserName,#otherUserName').on('blur', function(event) {
+        isUserAvailable(this);
     });
 
-    $('#otherUserName').on('blur', function() {
-        var otherUser = $('#otherUserName').val();
-        isUserAvailable(otherUser);
+    //When Form Element Changes
+    $('#selfUserName,#otherUserName').on('change', function(event) {
+         $(this).parent().children('.check').hide();
+         $(this).parent().children('.circle').hide();
     });
 
     // Canned Messages

@@ -128,7 +128,9 @@ input, textarea {
   border-radius: 0;
   transition: border-color .25s ease, box-shadow .25s ease;
   background-color: white;
+  padding-right: 3em;
 }
+
 input:focus, textarea:focus {
   outline: 0;
   border-color: #1ab188;

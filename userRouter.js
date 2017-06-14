@@ -6,6 +6,8 @@ const passport = require('passport');
 const {User} = require('./models/users');
 const UserService = require('./service/userService');
 const router = express.Router();
+const uuid = require('uuid');
+
 
 router.use(jsonParser);
 
@@ -58,8 +60,9 @@ router.get('/profile', passport.authenticate('basic', {session: false}), async (
 
 router.post('/register', async (req, res) => {
   try {
-    req.body.self.reference = "ref";
-    req.body.other.reference = "ref";
+    let ref = uuid.v4();
+    req.body.self.reference = ref;
+    req.body.other.reference = ref;
     let user1Available = await UserService.isUserAvailable(req.body.self.username); 
     let user2Available = await UserService.isUserAvailable(req.body.other.username); 
 
@@ -91,6 +94,7 @@ router.post('/login',
   passport.authenticate('basic', {session: false}),
   (req,res) => {
     return res.status(200).json({message: 'ok'});
+
 });
 
 
