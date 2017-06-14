@@ -155,6 +155,29 @@ p.right {
     text-align: right;
 }
 
+.circle {
+    color: crimson;
+    font-size: 2.9em;
+    position: absolute;
+    margin-top: -1em;
+    right: .1em;
+    display: none;
+
+}
+
+.check {
+    color: green;
+   	font-size: 2.9em;
+    position: absolute;
+    margin-top: -1em;
+    right: .1em;
+    display: none;
+
+}
+
+.relative {
+    position: relative;
+}
 
 /* Add a black background color to the top navigation */
 .topnav {

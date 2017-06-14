@@ -14,6 +14,12 @@ function isUserAvailable(userName) {
     }
     http.get("users/available/" + userName,function(data){
     console.log(data);
+        if (data == true) {
+            $('.check').fadeToggle( "slow", "linear" );
+        //  alert('Username is available');   
+        } else {
+            $('.circle').fadeToggle( "slow", "linear" );
+        }
     });
 };
 
@@ -27,7 +33,8 @@ function userLogin(username, password) {
     console.log("logging in " + username);
     http.setCredentials(username, password);
     http.post("users/login", login, function(data) {
-        alert('logged in');
+        // res.redirect('/myprofile');
+        alert('Welcome ' + username);
     });
 }
 
