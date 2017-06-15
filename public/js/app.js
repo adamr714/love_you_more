@@ -32,12 +32,17 @@ function userRegistration(registration) {
     });
 } 
 
+function loggedIn() {
+    $('#signUpForm,#mainText,#myTopnav').toggle();
+    $('#myTopnavLogout,#myProfile').show();
+};
+
 function userLogin(username, password) {
     console.log("logging in " + username);
     http.setCredentials(username, password);
     http.post("users/login", login, function(data) {
-        // res.redirect('/myprofile');
-        alert('Welcome ' + username);
+        // alert('Welcome ' + username);
+        loggedIn();
     });
 }
 
