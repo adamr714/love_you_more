@@ -46,9 +46,10 @@
 				</div>
 
 				<div class="topnavLogout" id="myTopnavLogout">
-						<a href="#"></a>
-						<a href="#LogOut">Logout</a>
-						<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+					<button onclick="loggedOut()" class="logout">Log Out</button>
+						<!--<a href="#LogOut">Logout</a>-->
+						<!--<a href="" onclick="loggedOut')">Logout</a>-->
+
 				</div>
 
 				<!--<button id="loginform" class="signup">Sign in / <br>Demo Account</button>-->
@@ -431,7 +432,7 @@
 	<main id="myProfile" class="myProfile">	
 		<div class="row">
 			<div class="col-12">
-				<p class="header">Welcome Back #{name}</p>
+				<p class="header">Welcome Back ${username}</p>
 			</div>
 		</div>
 

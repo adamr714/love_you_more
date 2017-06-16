@@ -200,7 +200,13 @@ p.right {
     display: none;
 }
 
-
+button.logout {
+    color: white;
+    background-color: crimson;
+    border: none;
+    padding-top: .8em;
+    font-family: 'Cinzel', sans-serif;
+}
 
 .topnavLogout a {
     float: left;

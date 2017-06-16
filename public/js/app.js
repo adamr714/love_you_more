@@ -37,6 +37,15 @@ function loggedIn() {
     $('#myTopnavLogout,#myProfile').show();
 };
 
+function loggedOut() {
+    var logout = confirm("Are you sure you want to log out?");
+    if (logout == true) {
+        $('#myTopnavLogout,#myProfile').hide();
+        $('#signUpForm,#mainText,#myTopnav').toggle();
+    };
+};
+
+
 function userLogin(username, password) {
     console.log("logging in " + username);
     http.setCredentials(username, password);
@@ -96,8 +105,9 @@ $(document).ready(function() {
                 "email" : $('#otherEmail').val()
         	}
         };
-            console.log(registration);
-            userRegistration(registration);
+            // console.log(registration);
+            // userRegistration(registration);
+            loggedIn();
     });
 
     $('#login').on('submit', function(event) {
