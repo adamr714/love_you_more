@@ -230,6 +230,10 @@ button.logout {
     font-size: 17px;
 }
 
+.noMargin {
+    margin-top: 0px;
+}
+
 /* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
@@ -249,6 +253,7 @@ button.logout {
     display: block;
   }
 }
+
 
 .cannedMessage {
     width: 100%;
