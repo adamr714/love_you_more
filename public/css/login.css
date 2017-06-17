@@ -139,6 +139,9 @@ input:focus, textarea:focus {
 textarea {
   border: 2px solid #a0b3b0;
   resize: vertical;
+  height: 8em;
+  font-size: 1em;
+  margin-bottom: 1em;
 }
 
 .field-wrap {
