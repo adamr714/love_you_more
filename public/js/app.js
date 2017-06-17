@@ -29,20 +29,18 @@ function isUserAvailable(userNameElement) {
 function userRegistration(registration) {
     console.log(registration);
     http.post("users/register/", registration, function(data){
+        onTabSelect('#logInTab');
     });
 } 
 
 function loggedIn() {
-    $('#signUpForm,#mainText,#myTopnav').toggle();
+    $('#signUpForm,#mainText,#myTopnav').hide();
     $('#myTopnavLogout,#myProfile').show();
 };
 
 function loggedOut() {
-    var logout = confirm("Are you sure you want to log out?");
-    if (logout == true) {
-        $('#myTopnavLogout,#myProfile').hide();
-        $('#signUpForm,#mainText,#myTopnav').toggle();
-    };
+    $('#myTopnavLogout,#myProfile').hide();
+    $('#signUpForm,#mainText,#myTopnav').show();
 };
 
 
@@ -106,8 +104,7 @@ $(document).ready(function() {
         	}
         };
             // console.log(registration);
-            // userRegistration(registration);
-            loggedIn();
+            userRegistration(registration);
     });
 
     $('#login').on('submit', function(event) {
