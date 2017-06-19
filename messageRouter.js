@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+const MessageService = require('./service/messageService');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const authenticateService = require('./service/authenticateService'); 
+
+authenticateService.initialize(router);
 
 //Schema
 const {Messages} = require('./models/messages');
@@ -16,6 +20,9 @@ router.get('/', async (req, res) => {
   res.status(200).json(data);
 });
 
+router.post('/send',authenticateService.loginRequired(), jsonParser, async (req, res) =>  {
+  res.status(200).json({message: 'Hello'});
+});
 
 // Post Section
 router.post('/', jsonParser, async (req, res) => {
@@ -59,17 +66,6 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-
-// Delete Section - As Delete
-// router.delete('/:id', async (req, res) => {
-//     try {    
-//       let data = await Messages.findByIdAndRemove(req.params.id).exec();
-//       res.status(200).json({message: 'success'});
-//     }  catch(err) {
-//       console.error(err);
-//       res.status(500).json({error: 'something went terribly wrong'});
-//     }
-// });
 
 // Put Section
 router.put('/:id', jsonParser, async (req, res) => {
