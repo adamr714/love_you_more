@@ -1,18 +1,15 @@
 const express = require('express');
 const router = express.Router();
-
 const MessageService = require('./service/messageService');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const authenticateService = require('./service/authenticateService'); 
-
-authenticateService.initialize(router);
+const authenticationService = require('./service/authenticationService'); 
 
 //Schema
 const {Messages} = require('./models/messages');
 
-const app = express();
-
+router.use(jsonParser);
+authenticationService.initialize(router);
 
 //Get
 router.get('/', async (req, res) => {
@@ -20,7 +17,7 @@ router.get('/', async (req, res) => {
   res.status(200).json(data);
 });
 
-router.post('/send',authenticateService.loginRequired(), jsonParser, async (req, res) =>  {
+router.post('/send',authenticationService.loginRequired, jsonParser, async (req, res) =>  {
   res.status(200).json({message: 'Hello'});
 });
 

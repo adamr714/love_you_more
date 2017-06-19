@@ -1,8 +1,6 @@
-const {BasicStrategy} = require('passport-http');
 const express = require('express');
 const jsonParser = require('body-parser').json();
-const passport = require('passport');
-
+const authenticationService = require('./service/authenticationService'); 
 const {User} = require('./models/users');
 const UserService = require('./service/userService');
 const router = express.Router();
@@ -10,49 +8,7 @@ const uuid = require('uuid');
 
 
 router.use(jsonParser);
-
-const basicStrategy = new BasicStrategy(async (username, password, callback) => {
-  try {
-    let user = await User.findOne({username: username}).exec();
-    if (!user) {
-      return callback(null, false, {message: 'Incorrect username'});
-    }
-    let isValid= await user.validatePassword(password);
-    if (!isValid) {
-      return callback(null, false, {message: 'Incorrect password'});
-    }
-    else {
-      return callback(null, user)
-    }
-  } catch (err) {
-    console.error(err);
-    return callback(null, false, {message: 'Server Error'});
-  }
-});
-
-const loginRequired = (req, res, next) => {
-  let authenticationMiddleware=passport.authenticate('basic', {session: false}, 
-    function(err, user, info) {
-      if (err) {
-        condole.error(`Authentication Error: [${err}]`)
-        res.send(500, "Internal Server Error");
-      }
-
-      if (!user) {
-        res.set('WWW-Authenticate', 'x'+info);
-        return res.send(401);
-      }
-      
-      next();
-    })
-    
-    authenticationMiddleware(req, res, next);
-};
-
-
-passport.use(basicStrategy);
-router.use(passport.initialize());
-
+authenticationService.initialize(router);
 
 /* Registration Model
 {
@@ -73,7 +29,7 @@ router.use(passport.initialize());
 }
 */
 
-router.get('/profile', passport.authenticate('basic', {session: false}), async (req,res) => {
+router.get('/profile', authenticationService.loginRequired, async (req,res) => {
   res.status(200).json({message: "WOO HOO YOU ARE AUTHORIZED!!!!"}); 
 })
 
@@ -110,7 +66,7 @@ router.get('/available/:username', async (req, res) => {
   }
 });
 
-router.post('/login', loginRequired, (req,res) => {
+router.post('/login', authenticationService.loginRequired, (req,res) => {
     return res.status(200).json({message: 'ok'});
 });
 
@@ -203,13 +159,6 @@ router.get('/', (req, res) => {
     .then(users => res.json(users.map(user => user.apiRepr())))
     .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
 });
-
-router.get('/me',
-  passport.authenticate('basic', {session: false}),
-  (req, res) => res.json({User: req.user.apiRepr()})
-);
-
-
 
 
 module.exports = router;

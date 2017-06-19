@@ -1,6 +1,6 @@
-const passport = require('passport');
 const {BasicStrategy} = require('passport-http');
 const {User} = require('../models/users');
+const passport = require('passport');
 
 const basicStrategy = new BasicStrategy(async (username, password, callback) => {
   try {
@@ -40,16 +40,13 @@ const loginRequired = (req, res, next) => {
     authenticationMiddleware(req, res, next);
 };
 
-
 function AuthenticationService() {
-    this.initialize = function(router) {
-        passport.use(basicStrategy);
-        router.use(passport.initialize());
-    }
+  this.loginRequired = loginRequired;
 
-    this.loginRequired = function() {
-        return loginRequired;
-    }
+  this.initialize = function(router) {
+    passport.use(basicStrategy);
+    router.use(passport.initialize());
+  }
 }
 
 module.exports = new AuthenticationService();
