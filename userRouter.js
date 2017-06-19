@@ -30,6 +30,26 @@ const basicStrategy = new BasicStrategy(async (username, password, callback) => 
   }
 });
 
+const loginRequired = (req, res, next) => {
+  let authenticationMiddleware=passport.authenticate('basic', {session: false}, 
+    function(err, user, info) {
+      if (err) {
+        condole.error(`Authentication Error: [${err}]`)
+        res.send(500, "Internal Server Error");
+      }
+
+      if (!user) {
+        res.set('WWW-Authenticate', 'x'+info);
+        return res.send(401);
+      }
+      
+      next();
+    })
+    
+    authenticationMiddleware(req, res, next);
+};
+
+
 passport.use(basicStrategy);
 router.use(passport.initialize());
 
@@ -90,11 +110,8 @@ router.get('/available/:username', async (req, res) => {
   }
 });
 
-router.post('/login', 
-  passport.authenticate('basic', {session: false}),
-  (req,res) => {
+router.post('/login', loginRequired, (req,res) => {
     return res.status(200).json({message: 'ok'});
-
 });
 
 
