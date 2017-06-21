@@ -33,6 +33,13 @@ function userRegistration(registration) {
     });
 } 
 
+function userMessage(message) {
+    console.log(message);
+    http.post('messages/send', message, function(data){
+
+    });
+}
+
 function loggedIn() {
     $('#signUpForm,#mainText,#myTopnav').hide();
     $('#myTopnavLogout,#myProfile').show();
@@ -105,6 +112,13 @@ $(document).ready(function() {
         };
             // console.log(registration);
             userRegistration(registration);
+    });
+
+    $('#messageForm').on('submit', function(event) {
+        event.preventDefault();
+        var message = $('#messageArea').val();
+        // console.log(message);
+        userMessage(message);
     });
 
     $('#login').on('submit', function(event) {
