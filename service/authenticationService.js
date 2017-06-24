@@ -33,7 +33,7 @@ const loginRequired = (req, res, next) => {
         res.set('WWW-Authenticate', 'x'+info);
         return res.send(401);
       }
-      
+      req.user = user;
       next();
     })
     

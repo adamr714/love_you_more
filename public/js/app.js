@@ -35,7 +35,7 @@ function userRegistration(registration) {
 
 function userMessage(message) {
     console.log(message);
-    http.post('messages/send', message, function(data){
+    http.post('messages/send', {"message":message}, function(data){
 
     });
 }

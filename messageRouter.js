@@ -4,7 +4,7 @@ const MessageService = require('./service/messageService');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const authenticationService = require('./service/authenticationService'); 
-
+const userService = require('./service/userService')
 //Schema
 const {Messages} = require('./models/messages');
 
@@ -18,7 +18,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/send',authenticationService.loginRequired, jsonParser, async (req, res) =>  {
-  res.status(200).json({message: 'Hello'});
+  console.log(req.body.message);
+    let relatedUser = await userService.findRelatedUser(req.user);
+    console.log(relatedUser);
+     let data = await Messages
+      .create({
+        sender: req.user._id.toString(),
+        recipient: relatedUser._id.toString(),
+        message: req.body.message
+      });
+  res.status(200).json({message: 'Hello'});    
 });
 
 // Post Section
