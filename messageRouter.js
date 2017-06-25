@@ -17,17 +17,27 @@ router.get('/', async (req, res) => {
   res.status(200).json(data);
 });
 
+router.get('/recieved', authenticationService.loginRequired, async(req, res) => {
+  let messages = await MessageService.getReceivedMessages(req.user);
+  res.status(200).json(messages);
+});
+
 router.post('/send',authenticationService.loginRequired, jsonParser, async (req, res) =>  {
   console.log(req.body.message);
     let relatedUser = await userService.findRelatedUser(req.user);
-    console.log(relatedUser);
-     let data = await Messages
-      .create({
-        sender: req.user._id.toString(),
-        recipient: relatedUser._id.toString(),
-        message: req.body.message
-      });
-  res.status(200).json({message: 'Hello'});    
+      if (relatedUser !=null) {
+          console.log(relatedUser);
+          let data = await Messages
+            .create({
+                sender: req.user._id.toString(),
+                recipient: relatedUser._id.toString(),
+                message: req.body.message
+            });
+        res.status(200).json({message: 'Hello'});   
+      } else {
+        console.log('Related User Not Found!');
+        res.status(404).json({message: 'Related User Not Found'});
+      }
 });
 
 // Post Section

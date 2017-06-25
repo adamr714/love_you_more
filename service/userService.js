@@ -1,4 +1,5 @@
 const {User} = require('../models/users');
+const mongoose = require('mongoose');
 
 function verifyUser(userObject) {
     if (!userObject) {
@@ -54,11 +55,14 @@ function UserService() {
     
     this.findRelatedUser=function(user) {
         return new Promise(async (resolve, reject) => {
-            let user = await User.findOne({'reference': user.reference, "_id": {'$not': {'$eq': ObjectId(user._id)}}}).exec();
-            console.log("The usere is: " + user)
-            resolve(user);
+            if (user == null) {
+                console.error('User is Null');
+                reject('User is Null');    
+            };
+            let relatedUser  = await User.findOne({'reference': user.reference, "_id": {'$not': {'$eq': mongoose.Types.ObjectId(user._id)}}}).exec();
+            console.log("The usere is: " + relatedUser)
+            resolve(relatedUser);
         });        
-        // db.getCollection('users').find({'reference':"2f3ce462-541b-4d5c-a3b5-2d895cb4b9d7", "_id": {'$not': {'$eq': ObjectId("5949c8b1b01dfaac6ae6fe69")}} })
     }
 
     this.create = function(userObject) {
