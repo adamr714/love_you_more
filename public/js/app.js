@@ -36,7 +36,6 @@ function userRegistration(registration) {
 function userMessage(message) {
     console.log(message);
     http.post('messages/send', {"message":message}, function(data){
-
     });
 }
 
@@ -125,7 +124,21 @@ $(document).ready(function() {
         event.preventDefault();
         userLogin($('#usernameLogIn').val(), $('#passwordLogIn').val());
     });        
-});
+
+    http.get("messages/recieved/", function(data){
+        var recievedMessages;
+        var recievedMessagesData;
+        recieved = data
+        console.log(data);
+            for(var i = 0; i < recievedMessages.length; i++) {
+                recievedMessagesData = recieved[i].message;
+            }    
+        $('#template').html(recieved);
+        });
+    });
+
+
+
 
 
 //menu

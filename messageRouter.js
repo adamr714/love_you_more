@@ -22,6 +22,8 @@ router.get('/recieved', authenticationService.loginRequired, async(req, res) => 
   res.status(200).json(messages);
 });
 
+
+
 router.post('/send',authenticationService.loginRequired, jsonParser, async (req, res) =>  {
   console.log(req.body.message);
     let relatedUser = await userService.findRelatedUser(req.user);
