@@ -6,7 +6,7 @@ const postSchmea = mongoose.Schema({
     sender : {type: String, required: true},
     recipient : {type: String, required: true},
     message : {type: String, required: true},
-    date : Number, 
+    date: {type: Date, default: Date.now},
     delete : {type: Boolean, default: false}
 });
 

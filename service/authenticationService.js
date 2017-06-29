@@ -4,7 +4,7 @@ const passport = require('passport');
 
 const basicStrategy = new BasicStrategy(async (username, password, callback) => {
   try {
-    let user = await User.findOne({username: username}).exec();
+    let user = await User.findOne({username: username.toLowerCase()}).exec();
     if (!user) {
       return callback(null, false, {message: 'Incorrect username'});
     }

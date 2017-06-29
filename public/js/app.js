@@ -44,6 +44,31 @@ function loggedIn() {
     $('#myTopnavLogout,#myProfile').show();
 };
 
+var messageResults = function(element) {
+    var messageParameter = $('#template').html()
+        .replace
+    element.html(messageParameter);
+}
+
+function displayMessages() {
+    http.get("messages/statistics/", function(data){
+        $('#MessageSentCount').html(data.sent);
+        $('#MessageRecievedCount').html(data.received);
+    });
+    http.get('messages/recieved/', function(data){
+        console.log(data[0].message);
+        console.log(data[0].date);
+        console.log(data[0].sender);
+        $('#template').html(data[0].message);
+        // for (var i; i <= data.length; i++) {
+        //    console.log(data[i]);
+        // }
+    });
+}
+
+
+
+
 function loggedOut() {
     $('#myTopnavLogout,#myProfile').hide();
     $('#signUpForm,#mainText,#myTopnav').show();
@@ -56,6 +81,7 @@ function userLogin(username, password) {
     http.post("users/login", login, function(data) {
         // alert('Welcome ' + username);
         loggedIn();
+        displayMessages();
     });
 }
 
@@ -125,20 +151,8 @@ $(document).ready(function() {
         userLogin($('#usernameLogIn').val(), $('#passwordLogIn').val());
     });        
 
-    http.get("messages/recieved/", function(data){
-        var recievedMessages;
-        var recievedMessagesData;
-        recieved = data
-        console.log(data);
-            for(var i = 0; i < recievedMessages.length; i++) {
-                recievedMessagesData = recieved[i].message;
-            }    
-        $('#template').html(recieved);
-        });
-    });
 
-
-
+});
 
 
 //menu

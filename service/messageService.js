@@ -1,8 +1,3 @@
-// Message Sender 
-// Message Receiver
-
-// Message
-
 const {Messages} = require('../models/messages');
 
 function MessageService() {
@@ -17,9 +12,7 @@ function MessageService() {
             resolve(recievedMessage);
         });        
     }
-}
 
-function MessageCounterRecieved() {
     this.countRecievedMessages = function(user) {
         return new Promise(async (resolve, reject) => {
             if (user == null) {
@@ -31,9 +24,7 @@ function MessageCounterRecieved() {
             resolve(recievedMessageCount);
         });        
     }
-}
 
-function MessageCounterSent() {
     this.countSentMessages = function(user) {
         return new Promise(async (resolve, reject) => {
             if (user == null) {
@@ -46,9 +37,6 @@ function MessageCounterSent() {
         });        
     }
 }
-
-
-// db.getCollection('messages').find({delete: false, recipient : '5949c8b1b01dfaac6ae6fe69'}).count() 
 
 module.exports = new MessageService();
 

@@ -10,25 +10,6 @@ const uuid = require('uuid');
 router.use(jsonParser);
 authenticationService.initialize(router);
 
-/* Registration Model
-{
-	"self": {
-		"username":"jdoe2",
-		"password":"123345",
-		"firstName": "John",
-		"lastName":"Doe",
-    "email":"john.doe@gmail.com"
-	},
-	"other": {
-		"username":"janedoe2",
-		"password":"123345",
-		"firstName": "Jane",
-		"lastName":"Doe",
-    "email":"jane.doe@gmail.com"
-	}
-}
-*/
-
 router.get('/profile', authenticationService.loginRequired, async (req,res) => {
   res.status(200).json({message: "WOO HOO YOU ARE AUTHORIZED!!!!"}); 
 })
@@ -49,7 +30,6 @@ router.post('/register', async (req, res) => {
 
     let user1 = await UserService.create(req.body.self);
     let user2 = await UserService.create(req.body.other);
-    // let user2 = await UserService.create(req.body);
     res.status(201).json({message: 'Created'});
 
   } catch (err) {

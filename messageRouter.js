@@ -22,6 +22,11 @@ router.get('/recieved', authenticationService.loginRequired, async(req, res) => 
   res.status(200).json(messages);
 });
 
+router.get('/statistics', authenticationService.loginRequired, async(req, res) => {
+  let statisticRecieved = await MessageService.countRecievedMessages(req.user);
+  let statisticSent = await MessageService.countSentMessages(req.user);
+  res.status(200).json({sent: statisticSent, received: statisticRecieved});
+});
 
 
 router.post('/send',authenticationService.loginRequired, jsonParser, async (req, res) =>  {
@@ -29,11 +34,11 @@ router.post('/send',authenticationService.loginRequired, jsonParser, async (req,
     let relatedUser = await userService.findRelatedUser(req.user);
       if (relatedUser !=null) {
           console.log(relatedUser);
-          let data = await Messages
-            .create({
+          let data = await Messages.create({
                 sender: req.user._id.toString(),
                 recipient: relatedUser._id.toString(),
-                message: req.body.message
+                message: req.body.message,
+                // date: new Date().toISOString()
             });
         res.status(200).json({message: 'Hello'});   
       } else {

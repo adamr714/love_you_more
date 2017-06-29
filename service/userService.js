@@ -84,7 +84,7 @@ function UserService() {
             let hashPassword = await User.hashPassword(password);
             let newUser = await User
                 .create({
-                    username: username,
+                    username: username.toLowerCase(),
                     password: hashPassword,
                     firstName: firstName,
                     lastName: lastName,
@@ -97,7 +97,7 @@ function UserService() {
     this.isUserAvailable = function(username) {
         return new Promise(async (resolve,reject) => {
             let userCount = await User
-                        .find({username})
+                        .find({username: username.toLowerCase()})
                         .count()
                         .exec();
                 if (userCount > 0) {
