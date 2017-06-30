@@ -73,7 +73,8 @@ nav ul li:nth-child(3)::after {
 	font-weight: bold;
 	margin-bottom: 0em;
 	/* text-decoration: underline; */
-	font-variant: small-caps;
+	font-variant: uppercase;
+	text-transform: capitalize;
 }
 
 .primaryText {
@@ -232,6 +233,27 @@ button.logout {
 
 .noMargin {
     margin-top: 0px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.25em;
+    color: crimson;
+}
+
+.green {
+    color: green;
+}
+
+.messagesSent {
+    text-align: center;
+    font-size: 4em;
+    color: crimson;
+}
+
+.messagesRecieved {
+    text-align: center;
+    font-size: 4em;
+    color: green;
 }
 
 /* Change the color of links on hover */

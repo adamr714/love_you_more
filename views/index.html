@@ -432,7 +432,7 @@
 	<main id="myProfile" class="myProfile">	
 		<div class="row">
 			<div class="col-12">
-				<p class="header">Welcome Back ${username}</p>
+				<p class="header" id="Welcome">Welcome Back ${username}</p>
 			</div>
 		</div>
 
@@ -448,14 +448,14 @@
 				</form>	
 			</div>
 
-			<div class="col-3">
+			<div class="col-3 sent">
 				<p class="noMargin">Messages Sent</p>
-					<div id='MessageSentCount'></div>
+					<div id='MessageSentCount' class="messagesSent"></div>
 			</div>
 
-			<div class="col-3">
-				<p class="noMargin">Messages Recieved</p>
-				<div id='MessageRecievedCount'></div>
+			<div class="col-3 recieved">
+				<p class="noMargin green">Messages Recieved</p>
+				<div id='MessageRecievedCount'class="messagesRecieved"></div>
 			</div>
 		</div>
 

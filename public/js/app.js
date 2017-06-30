@@ -50,24 +50,31 @@ var messageResults = function(element) {
     element.html(messageParameter);
 }
 
+
+
 function displayMessages() {
     http.get("messages/statistics/", function(data){
         $('#MessageSentCount').html(data.sent);
         $('#MessageRecievedCount').html(data.received);
     });
     http.get('messages/recieved/', function(data){
-        console.log(data[0].message);
-        console.log(data[0].date);
-        console.log(data[0].sender);
-        $('#template').html(data[0].message);
-        // for (var i; i <= data.length; i++) {
-        //    console.log(data[i]);
-        // }
+        // console.log(data.length)
+        // console.log(data[0].message);
+        // console.log(data[0].date);
+        // console.log(data[0].sender);
+        // $('#template').html(data[0].message);
+        for (var i; i <= data.length; i++) {
+            var currentMessage = data[i]
+
+            var info = $('#recievedMesssagesTemplate').html()
+                .replace('{{message}}', currentMessage.message)
+                .replace('{{sender}}', currentMessage.sender)
+                .replace('{{date}}', currentMessage.date)
+            currentMessage.append(info);
+            // $('#template').html(currentMessage);
+        }
     });
 }
-
-
-
 
 function loggedOut() {
     $('#myTopnavLogout,#myProfile').hide();
@@ -81,6 +88,8 @@ function userLogin(username, password) {
     http.post("users/login", login, function(data) {
         // alert('Welcome ' + username);
         loggedIn();
+        $('#Welcome').html('Welcome Back ' + username + "!");
+        console.log('Welcome Back ' + username.toUpperCase());
         displayMessages();
     });
 }
@@ -110,9 +119,10 @@ $(document).ready(function() {
             // console.log(cannedMessages);
 		    for (var i = 0; i < cannedMessages.length; i++) {
 		        cannedMessagesData+= "<option value='" + i + "'>" +
-		          cannedMessages[i].short + "</option>";
+		          cannedMessages[i].message + "</option>";
 			}
 	      	$("#cannedMessageDisplay").html(cannedMessagesData);
+            $('#messageArea').html(cannedMessagesData);
 	    });
 
     //Login 
@@ -192,5 +202,4 @@ $('a[href*="#"]')
       }
     }
   });
-
 
