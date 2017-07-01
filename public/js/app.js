@@ -91,6 +91,11 @@ function userLogin(username, password) {
         $('#Welcome').html('Welcome Back ' + username + "!");
         console.log('Welcome Back ' + username.toUpperCase());
         displayMessages();
+
+        $('#templates').load('template.html', function() {
+		    // console.log($('#character').html());
+        	// renderList();
+    	});	
     });
 }
 
@@ -120,9 +125,17 @@ $(document).ready(function() {
 		    for (var i = 0; i < cannedMessages.length; i++) {
 		        cannedMessagesData+= "<option value='" + i + "'>" +
 		          cannedMessages[i].message + "</option>";
+
+                $('#messageArea').on('change', function() {
+                    var option = $(this).find('option:selected').text();
+                });
+
+                $('#messageArea').html(cannedMessagesData);
 			}
+
+
 	      	$("#cannedMessageDisplay").html(cannedMessagesData);
-            $('#messageArea').html(cannedMessagesData);
+            // $('#messageArea').html(cannedMessagesData);
 	    });
 
     //Login 
