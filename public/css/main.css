@@ -39,7 +39,7 @@ nav ul li:nth-child(3)::after {
 }
 
 .col-4 {
-	width: 33%;
+	/* width: 33%; */
 	float: left;
 }
 
@@ -100,6 +100,7 @@ nav ul li:nth-child(3)::after {
     text-align: center;
     background-color: darkturquoise;
     position: relative;
+    min-width: 100%;
 }
 
 
@@ -280,6 +281,11 @@ button.logout {
 .cannedMessage {
     width: 100%;
     margin-bottom: 1em;
+}
+
+.messageTemplate {
+    margin-bottom: 1em;
+    min-width: 20em;
 }
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 600px) {

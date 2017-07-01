@@ -19,7 +19,18 @@ router.get('/', async (req, res) => {
 
 router.get('/recieved', authenticationService.loginRequired, async(req, res) => {
   let messages = await MessageService.getReceivedMessages(req.user);
-  res.status(200).json(messages);
+  let results = new Array();
+  let relatedUser = await userService.findRelatedUser(req.user);
+
+  for (let i=0; i < messages.length; i++) {
+    let message = messages[i];
+    results.push({
+      sender: relatedUser.firstName,
+      message: message.message,
+      date: message.date
+    });
+  }
+  res.status(200).json(results);
 });
 
 router.get('/statistics', authenticationService.loginRequired, async(req, res) => {

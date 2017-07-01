@@ -63,14 +63,15 @@ function displayMessages() {
         // console.log(data[0].date);
         // console.log(data[0].sender);
         // $('#template').html(data[0].message);
-        for (var i; i <= data.length; i++) {
-            var currentMessage = data[i]
-
-            var info = $('#recievedMesssagesTemplate').html()
+        for (var i=0; i < data.length; i++) {
+            var currentMessage = data[i];
+            console.log(currentMessage);
+            var infoElement = $('#recievedMesssagesTemplate');
+            var info = infoElement.html()
                 .replace('{{message}}', currentMessage.message)
                 .replace('{{sender}}', currentMessage.sender)
-                .replace('{{date}}', currentMessage.date)
-            currentMessage.append(info);
+                .replace('{{date}}', moment(currentMessage.date).fromNow())
+            $('#messagePlaceHolder').append(info);
             // $('#template').html(currentMessage);
         }
     });
@@ -91,15 +92,13 @@ function userLogin(username, password) {
         $('#Welcome').html('Welcome Back ' + username + "!");
         console.log('Welcome Back ' + username.toUpperCase());
         displayMessages();
-
-        $('#templates').load('template.html', function() {
-		    // console.log($('#character').html());
-        	// renderList();
-    	});	
     });
 }
 
 $(document).ready(function() {
+        
+    $('#template').load('templates/template.html');	
+
     $('#loginform').on('click', function() {
         console.log('Clicked'); 
         $( "#signUpForm" ).fadeToggle( "slow", "linear" );
