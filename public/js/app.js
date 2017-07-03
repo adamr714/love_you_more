@@ -34,9 +34,13 @@ function userRegistration(registration) {
 } 
 
 function userMessage(message) {
-    console.log(message);
-    http.post('messages/send', {"message":message}, function(data){
-    });
+    console.log('You sent: ' + message);
+    if (message != "")  {
+       http.post('messages/send', {"message":message}, function(data){});
+        $('#messageForm').replaceWith('Your message has been sent!');
+    } else {
+        console.log('cant send an empty message');
+    }
 }
 
 function loggedIn() {
@@ -55,14 +59,10 @@ var messageResults = function(element) {
 function displayMessages() {
     http.get("messages/statistics/", function(data){
         $('#MessageSentCount').html(data.sent);
+        console.log(typeof data.sent);
         $('#MessageRecievedCount').html(data.received);
     });
     http.get('messages/recieved/', function(data){
-        // console.log(data.length)
-        // console.log(data[0].message);
-        // console.log(data[0].date);
-        // console.log(data[0].sender);
-        // $('#template').html(data[0].message);
         for (var i=0; i < data.length; i++) {
             var currentMessage = data[i];
             console.log(currentMessage);
@@ -72,7 +72,6 @@ function displayMessages() {
                 .replace('{{sender}}', currentMessage.sender)
                 .replace('{{date}}', moment(currentMessage.date).fromNow())
             $('#messagePlaceHolder').append(info);
-            // $('#template').html(currentMessage);
         }
     });
 }
@@ -87,7 +86,6 @@ function userLogin(username, password) {
     console.log("logging in " + username);
     http.setCredentials(username, password);
     http.post("users/login", login, function(data) {
-        // alert('Welcome ' + username);
         loggedIn();
         $('#Welcome').html('Welcome Back ' + username + "!");
         console.log('Welcome Back ' + username.toUpperCase());
@@ -125,11 +123,11 @@ $(document).ready(function() {
 		        cannedMessagesData+= "<option value='" + i + "'>" +
 		          cannedMessages[i].message + "</option>";
 
-                $('#messageArea').on('change', function() {
-                    var option = $(this).find('option:selected').text();
-                });
+                // $('#messageArea').on('change', function() {
+                //     var option = $(this).find('option:selected').text();
+                // });
 
-                $('#messageArea').html(cannedMessagesData);
+                // $('#messageArea').html(cannedMessagesData);
 			}
 
 
@@ -164,7 +162,6 @@ $(document).ready(function() {
     $('#messageForm').on('submit', function(event) {
         event.preventDefault();
         var message = $('#messageArea').val();
-        // console.log(message);
         userMessage(message);
     });
 
