@@ -26,7 +26,7 @@ var http = {
 		  }
 		});    	
 	},
-	post: function(url, data, callback) {
+	post: function(url, data, callback, errorCallback) {
 		var self = this;
 		$.ajax({
 		  dataType: "json",
@@ -49,6 +49,9 @@ var http = {
 		  },
 		  error: function(jqXHR, textStatus, errorThrown ) {
 		  	console.log(textStatus + ': ' + errorThrown);
+				if (errorCallback) {
+					errorCallback(textStatus, errorThrown);
+				}
 		  }
 		});    	
 	}

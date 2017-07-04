@@ -8,8 +8,6 @@ function myFunction() {
     }
 }
 
-
-
 function isUserAvailable(userNameElement) {
     var userName = $(userNameElement).val();
     if (userName == null || userName.length == 0) {
@@ -37,11 +35,20 @@ function userMessage(message) {
     console.log('You sent: ' + message);
     if (message != "")  {
        http.post('messages/send', {"message":message}, function(data){});
-        $('#messageForm').replaceWith('Your message has been sent!');
+    //    $('#messageForm').replaceWith('Your message has been sent!');
+       $('#messageForm').hide();
+       $('#ThankYou').show();
+    
     } else {
         console.log('cant send an empty message');
     }
 }
+
+function displaySendMessage() {
+       $('#messageForm').trigger("reset");; 
+       $('#messageForm').show();
+       $('#ThankYou').hide();
+};
 
 function loggedIn() {
     $('#signUpForm,#mainText,#myTopnav').hide();
@@ -54,15 +61,22 @@ var messageResults = function(element) {
     element.html(messageParameter);
 }
 
-
-
-function displayMessages() {
+//Seperate Function - Display Stats
+function displaySentCount() {
     http.get("messages/statistics/", function(data){
         $('#MessageSentCount').html(data.sent);
-        console.log(typeof data.sent);
+    });    
+};
+
+function displayRecievedCount() {
+    http.get("messages/statistics/", function(data){
         $('#MessageRecievedCount').html(data.received);
-    });
-    http.get('messages/recieved/', function(data){
+    });    
+};
+
+function displayMessagesRecieved() {
+   http.get('messages/recieved/', function(data){
+        $('#messagePlaceHolder').empty(); 
         for (var i=0; i < data.length; i++) {
             var currentMessage = data[i];
             console.log(currentMessage);
@@ -70,11 +84,18 @@ function displayMessages() {
             var info = infoElement.html()
                 .replace('{{message}}', currentMessage.message)
                 .replace('{{sender}}', currentMessage.sender)
-                .replace('{{date}}', moment(currentMessage.date).fromNow())
+                .replace('{{date}}', moment(currentMessage.date).fromNow());   
             $('#messagePlaceHolder').append(info);
         }
     });
-}
+};
+
+function displayMessages() {
+    displaySendMessage();
+    displaySentCount();
+    displayRecievedCount();
+    displayMessagesRecieved();
+};
 
 function loggedOut() {
     $('#myTopnavLogout,#myProfile').hide();
@@ -90,7 +111,12 @@ function userLogin(username, password) {
         $('#Welcome').html('Welcome Back ' + username + "!");
         console.log('Welcome Back ' + username.toUpperCase());
         displayMessages();
-    });
+    },
+        function(textStatus, errorThrown) {
+            $('#LoginError').toggle();
+            // alert('User Login Error');
+        }
+    );
 }
 
 $(document).ready(function() {
@@ -102,16 +128,25 @@ $(document).ready(function() {
         $( "#signUpForm" ).fadeToggle( "slow", "linear" );
     });
 
+    $('#SendAnother').on('click',function() {
+        displaySendMessage();
+    });
+
     // Sets Value
     $('#selfUserName,#otherUserName').on('blur', function(event) {
         isUserAvailable(this);
     });
 
     //When Form Element Changes
-    $('#selfUserName,#otherUserName').on('change', function(event) {
+    $('#selfUserName,#otherUserName, #login').on('change', function(event) {
          $(this).parent().children('.check').hide();
          $(this).parent().children('.circle').hide();
+         $('#LoginError').hide();
     });
+
+    // $('#login').on('change', function(event) {
+    //      $('#LoginError').hide();
+    // });
 
     // Canned Messages
 		http.get("canned_messages/", function(data){
@@ -122,12 +157,6 @@ $(document).ready(function() {
 		    for (var i = 0; i < cannedMessages.length; i++) {
 		        cannedMessagesData+= "<option value='" + i + "'>" +
 		          cannedMessages[i].message + "</option>";
-
-                // $('#messageArea').on('change', function() {
-                //     var option = $(this).find('option:selected').text();
-                // });
-
-                // $('#messageArea').html(cannedMessagesData);
 			}
 
 

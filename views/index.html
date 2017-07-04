@@ -38,7 +38,6 @@
 				</nav>-->
 
 				<div class="topnav" id="myTopnav">
-						<a href="#"></a>
 						<a href="#about">About</a>
 						<a href="#sample">Sample Messages</a>
 						<a href="#" id="loginform"> Log In / Sign Up</a>						
@@ -96,6 +95,9 @@
 											</label>
 											<input type="password" name="password" id="passwordLogIn" required  />
 										</div>
+										<div class="col-12 red hidden" id="LoginError">
+											We're sorry, but this username / password combination cannot be found.
+										</div>	
 									</div>
 								</div>
                 
@@ -449,6 +451,12 @@
 				<button class="button button-block button_text_love"/>Send Your Love!</button>			
 				</form>	
 			</div>
+
+			<div class="col-6 hidden" id="ThankYou">
+			Thank you, your message has been sent!
+
+			<button class="button button-block button_text_love" id="SendAnother">Send another?</button>	
+			</div>	
 
 			<div class="col-3 sent">
 				<p class="noMargin">Messages Sent</p>

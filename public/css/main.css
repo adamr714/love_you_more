@@ -260,7 +260,22 @@ button.logout {
 .none {
     padding: 0em;
     margin: -1em;
+    PADDING-LEFT: 1em;
+    padding-top: 1em;
+    padding-bottom: .25em;
 }
+
+.red {
+    border: 1px solid crimson;
+    background-color: crimson;
+    color: white;
+    padding: .5em;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
