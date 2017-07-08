@@ -282,6 +282,13 @@ button.logout {
     display: none;
 }
 
+.refresh {
+    text-align: center;
+    color: white;
+    background: green;
+    padding: .2em;
+}
+
 /* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
