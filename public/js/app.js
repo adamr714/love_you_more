@@ -58,13 +58,13 @@ function userMessage(message) {
 }
 
 function displaySendMessage() {
-    $('#messageForm').trigger("reset");;
+    $('#messageForm').trigger("reset");
     $('#messageForm').show();
     $('#ThankYou').hide();
 };
 
 function loggedIn() {
-    $('#signUpForm,#mainText,#myTopnav').hide();
+    $('#signUpForm,#mainText,#myTopnav,#slideshowContainer').hide();
     $('#myTopnavLogout,#myProfile').show();
 };
 
@@ -105,7 +105,8 @@ function displayMessages() {
 
 function loggedOut() {
     $('#myTopnavLogout,#myProfile').hide();
-    $('#signUpForm,#mainText,#myTopnav').show();
+    $('#signUpForm,#mainText,#myTopnav,#slideshowContainer').show();
+    $('#login').trigger("reset");
 };
 
 

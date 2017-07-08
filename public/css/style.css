@@ -8,7 +8,7 @@ body, html {
 .slideshow {
   position: absolute;
   z-index: 0;
-  top: 50px;
+  top: 0px;
   left: 0;
   width: 100vw;
   height: 58vh;
@@ -99,11 +99,11 @@ body, html {
 }
 
 .slideshow-text {
-  position: absolute;
-  top: 34%;
+  position: relative;
+  top: 3em;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: 100;
   font-size: 80px;
   width: 100vw;
