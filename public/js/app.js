@@ -119,10 +119,8 @@ function userLogin(username, password) {
             console.log('Welcome Back ' + username.toUpperCase());
             displayMessages();
         },
-        // function(textStatus, errorThrown) 
         function(errorJSON) {
-            $('#LoginError').toggle();
-            // alert('User Login Error');
+            $('#LoginError').show();
         }
     );
 }
