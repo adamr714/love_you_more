@@ -50,7 +50,7 @@ var http = {
 		  error: function(jqXHR, textStatus, errorThrown ) {
 		  	console.log(textStatus + ': ' + errorThrown);
 				if (errorCallback) {
-					errorCallback(textStatus, errorThrown);
+					errorCallback(jqXHR.responseJSON);
 				}
 		  }
 		});    	

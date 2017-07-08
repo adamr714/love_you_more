@@ -20,6 +20,10 @@ header {
 	margin-right: 5em;
 }
 
+.slideshowContainer {
+    position: relative;
+}
+
 nav {
 	float: left;
 }
