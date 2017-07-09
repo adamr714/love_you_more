@@ -52,7 +52,6 @@ nav ul li:nth-child(3)::after {
 	float: left;
 }
 
-
 .signup {
 	border: 1px solid #fff;
 	background-color: red;
@@ -287,7 +286,13 @@ button.logout {
     color: white;
     background: green;
     padding: .2em;
+    margin-top: .83em;
+    font-size: 1.5em;
+    cursor: pointer;
 }
+
+
+
 
 /* Change the color of links on hover */
 .topnav a:hover {

@@ -143,6 +143,7 @@ $(document).ready(function() {
         isUserAvailable(this);
     });
 
+    
     //When Form Element Changes
     $('#selfUserName,#otherUserName, #login').on('change', function(event) {
         $(this).parent().children('.check').hide();
@@ -150,9 +151,27 @@ $(document).ready(function() {
         $('#LoginError').hide();
     });
 
-    // $('#login').on('change', function(event) {
-    //      $('#LoginError').hide();
-    // });
+
+    $('#passwordConfirm').on('change', function() {
+        password = $('#password').val();
+        passwordConfirm = $('#passwordConfirm').val();
+        console.log(password);
+        console.log(passwordConfirm);
+        if (password === passwordConfirm) {
+            $('#PasswordMatch').hide();
+            $('#sumbit').prop("disabled", false).removeClass('grey');
+
+        } else {
+            $('#PasswordMatch').show();
+            $('#sumbit').prop("disabled", true).addClass('grey');
+        }
+    });
+
+
+    $('#refresh').on('click', function() {
+        displaySentRecievedCount();
+        displayMessagesRecieved();
+    });
 
     // Canned Messages
     http.get("canned_messages/", function(data) {

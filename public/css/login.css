@@ -176,10 +176,21 @@ textarea {
   color: #ffffff;
   transition: all 0.5s ease;
   -webkit-appearance: none;
+  cursor: pointer;
 }
+
+.grey {
+    background-color: grey;
+    cursor: default;
+}
+
+/*.grey:hover, .button:focus {
+  background: grey;
+}
+
 .button:hover, .button:focus {
   background: #179b77;
-}
+}*/
 
 .button-block {
   display: block;
