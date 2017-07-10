@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/recieved', authenticationService.loginRequired, async(req, res) => {
-  let messages = await MessageService.getReceivedMessages(req.user);
+  let messages = await MessageService.getReceivedMessages(req.user,5);
   let results = new Array();
   let relatedUser = await userService.findRelatedUser(req.user);
 

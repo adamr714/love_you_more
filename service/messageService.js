@@ -7,7 +7,13 @@ function MessageService() {
                 console.error('User is Null');
                 reject('User is Null');    
             };
-            let recievedMessage  = await Messages.find({delete: false, recipient : user._id.toString()}).sort({date:-1}).limit(5).exec();
+
+            let query = Messages.find({delete: false, recipient : user._id.toString()}).sort({date:-1});
+            if (limit != null) {
+                query = query.limit(limit);
+            }
+
+            let recievedMessage  = await query.exec();
             console.log("The usere is: " + recievedMessage)
             resolve(recievedMessage);
         });        
