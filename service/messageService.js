@@ -1,7 +1,7 @@
 const {Messages} = require('../models/messages');
 
 function MessageService() {
-    this.getReceivedMessages = function(user) {
+    this.getReceivedMessages = function(user, limit) {
         return new Promise(async (resolve, reject) => {
             if (user == null) {
                 console.error('User is Null');

@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
     let user2Available = await UserService.isUserAvailable(req.body.other.username); 
 
       if (!user1Available || !user2Available || req.body.self.username==req.body.other.username) { 
-        res.status(400).json({message: "Ensure users are available and not the same"}); 
+        res.status(400).json({message: "Please ensure user names are available and not the same"}); 
         return; 
       }
 

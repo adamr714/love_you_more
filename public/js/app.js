@@ -34,9 +34,9 @@ function userRegistration(registration) {
             onTabSelect('#logInTab');
             registerInProgress = false;
         },
-        function(textStatus, errorThrown, jqXHR) {
+        function(errorJSON) {
             registerInProgress = false;
-            alert(jqXHR.responseJSON.message);
+            alert(errorJSON.message);
         }
     );
     registerInProgress = true;
@@ -171,6 +171,7 @@ $(document).ready(function() {
 
 
     $('#refresh').on('click', function() {
+        $('#messagePlaceHolder').empty();
         displaySentRecievedCount();
         displayMessagesRecieved();
     });
@@ -178,17 +179,19 @@ $(document).ready(function() {
     // Canned Messages
     http.get("canned_messages/", function(data) {
         var cannedMessages;
-        var cannedMessagesData;
+        var cannedMessagesData = '<option value = "-1"></option>';
         cannedMessages = data;
         // console.log(cannedMessages);
         for (var i = 0; i < cannedMessages.length; i++) {
             cannedMessagesData += "<option value='" + i + "'>" +
                 cannedMessages[i].message + "</option>";
-
+        };
         $("#cannedMessageDisplay").html(cannedMessagesData);
-        
-    };
-        $('#messageArea').html(cannedMessagesData);
+
+        $("#cannedMessageDisplay").on('change', function(){
+            var option = $(this).find('option:selected').text();
+            $('#messageArea').text(option);
+        });
     });
 
 
