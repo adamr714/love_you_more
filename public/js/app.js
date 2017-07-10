@@ -1,5 +1,7 @@
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 var registerInProgress = false;
+var cannedMessages;
+
 
 function myFunction() {
     var x = document.getElementById("myTopnav");
@@ -182,12 +184,15 @@ $(document).ready(function() {
         for (var i = 0; i < cannedMessages.length; i++) {
             cannedMessagesData += "<option value='" + i + "'>" +
                 cannedMessages[i].message + "</option>";
-        }
-
 
         $("#cannedMessageDisplay").html(cannedMessagesData);
-        // $('#messageArea').html(cannedMessagesData);
+        
+    };
+        $('#messageArea').html(cannedMessagesData);
     });
+
+
+
 
     //Login 
     $(document).on('submit', '#register', function(event) {
