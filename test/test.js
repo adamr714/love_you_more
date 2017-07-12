@@ -40,7 +40,7 @@ function seedMessageData() {
     });
   }
   // this will return a promise
-  return Message.insertMany(seedData);
+  return Message.insertMany(messageData);
 }
 
 describe('messages API resource', function() {
