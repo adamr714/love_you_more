@@ -42,8 +42,6 @@ app.get('/myprofile',
   res.sendFile(__dirname + '/views/myprofile.html');
 });
 
-
-
 let server;
 
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
@@ -84,12 +82,3 @@ if (require.main === module) {
 };
 
 module.exports = {app, runServer, closeServer};
-
-
-
-
-
-
-// app.listen(process.env.PORT || 8080, () => {
-//   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
-// });

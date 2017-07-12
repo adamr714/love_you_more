@@ -36,7 +36,9 @@ function userRegistration(registration) {
         },
         function(errorJSON) {
             registerInProgress = false;
-            alert(errorJSON.message);
+            console.log('User Name Error');
+            $('#UserNameError').show();
+            // alert(errorJSON.message);
         }
     );
     registerInProgress = true;
