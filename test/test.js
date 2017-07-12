@@ -9,7 +9,7 @@ const should = chai.should();
 
 const {DATABASE_URL} = require('../config');
 const {Users} = require('../models/users');
-const {Message} = require('../models/messages');
+const {Messages} = require('../models/messages');
 const {Canned} = require('../models/canned');
 const {closeServer, runServer, app} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
@@ -35,12 +35,13 @@ function seedMessageData() {
   for (let i=1; i<=10; i++) {
     messageData.push({
       sender : faker.name.firstName(),
+      recipient: faker.name.firstName(),
       message : faker.lorem.sentence(),
       date: faker.date.recent()
     });
   }
   // this will return a promise
-  return Message.insertMany(messageData);
+  return Messages.insertMany(messageData);
 }
 
 describe('messages API resource', function() {
@@ -83,7 +84,7 @@ describe('messages API resource', function() {
           // otherwise our db seeding didn't work
           res.body.should.have.length.of.at.least(1);
 
-          return Message.count();
+          return Messages.count();
         })
         .then(count => {
           // the number of returned posts should be same
@@ -112,12 +113,13 @@ describe('messages API resource', function() {
           // just check one of the messages that its values match with those in db
           // and we'll assume it's true for rest
           resMessage = res.body[0];
-          return Message.findById(resMessage.id).exec();
+          return Messages.findById(resMessage._id).exec();
         })
         .then(message => {
           resMessage.sender.should.equal(message.sender);
           resMessage.message.should.equal(message.message);
-          resMessage.date.should.equal(message.date);
+          message.date.should.not.be.null;
+          new Date(resMessage.date).getTime().should.equal(message.date.getTime());
         });
     });
   });

@@ -7,6 +7,7 @@ const authenticationService = require('./service/authenticationService');
 const userService = require('./service/userService')
 //Schema
 const {Messages} = require('./models/messages');
+const RECEIVE_MESSAGE_COUNT=5;
 
 router.use(jsonParser);
 authenticationService.initialize(router);
@@ -17,10 +18,8 @@ router.get('/', async (req, res) => {
   res.status(200).json(data);
 });
 
-const MESSAGES_TO_SHOW = 20;
-
 router.get('/recieved', authenticationService.loginRequired, async(req, res) => {
-  let messages = await MessageService.getReceivedMessages(req.user,MESSAGES_TO_SHOW);
+  let messages = await MessageService.getReceivedMessages(req.user,RECEIVE_MESSAGE_COUNT);
   let results = new Array();
   let relatedUser = await userService.findRelatedUser(req.user);
 
