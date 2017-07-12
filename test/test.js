@@ -70,13 +70,13 @@ describe('messages API resource', function() {
 
     it('should return all existing message', function() {
       // strategy:
-      //    1. get back all posts returned by by GET request to `/posts`
+      //    1. get back all messages returned by by GET request to `//messages/recieved`
       //    2. prove res has right status, data type
-      //    3. prove the number of posts we got back is equal to number
+      //    3. prove the number of messages we got back is equal to number
       //       in db.
       let res;
       return chai.request(app)
-        .get('/messages/recieved')
+        .get('/messages')
         .then(_res => {
           res = _res;
           res.should.have.status(200);
@@ -97,7 +97,7 @@ describe('messages API resource', function() {
 
       let resMessage;
       return chai.request(app)
-        .get('/messages/recieved')
+        .get('/messages')
         .then(function(res) {
 
           res.should.have.status(200);
