@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 const should = chai.should();
 
 const {DATABASE_URL} = require('../config');
-const {Users} = require('../models/users');
+//Has to be export name - don't screw up!
+const {User} = require('../models/users');
 const {Messages} = require('../models/messages');
 const {Canned} = require('../models/canned');
 const {closeServer, runServer, app} = require('../server');
@@ -29,29 +30,31 @@ function tearDownDb() {
   });
 }
 
-function seedMessageData() {
-  console.info('seeding message data');
-  const messageData = [];
+function seedUserData() {
+  console.info('seeding user data');
+  const userData = [];
   for (let i=1; i<=10; i++) {
-    messageData.push({
-      sender : faker.name.firstName(),
-      recipient: faker.name.firstName(),
-      message : faker.lorem.sentence(),
-      date: faker.date.recent()
+    userData.push({
+      username : faker.internet.userName(),  
+      password : faker.internet.password(),
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      reference: faker.random.alphaNumeric()
     });
   }
   // this will return a promise
-  return Messages.insertMany(messageData);
+  return User.insertMany(userData);
 }
 
-describe('messages API resource', function() {
+//User Test
+describe('User API resource', function() {
 
   before(function() {
     return runServer(TEST_DATABASE_URL);
   });
 
   beforeEach(function() {
-    return seedMessageData();
+    return seedUserData();
   });
 
   afterEach(function() {
@@ -64,12 +67,9 @@ describe('messages API resource', function() {
     return closeServer();
   });
 
-  // note the use of nested `describe` blocks.
-  // this allows us to make clearer, more discrete tests that focus
-  // on proving something small
-  describe('GET endpoint', function() {
+  describe('User Testcase', function() {
 
-    it('should return all existing message', function() {
+    it('should return all existing users', function() {
       // strategy:
       //    1. get back all messages returned by by GET request to `//messages/recieved`
       //    2. prove res has right status, data type
@@ -77,28 +77,27 @@ describe('messages API resource', function() {
       //       in db.
       let res;
       return chai.request(app)
-        .get('/messages')
+        .get('/users')
         .then(_res => {
           res = _res;
           res.should.have.status(200);
-          // otherwise our db seeding didn't work
           res.body.should.have.length.of.at.least(1);
 
-          return Messages.count();
+          return User.count();
         })
         .then(count => {
-          // the number of returned posts should be same
+          // the number of returned users should be same
           // as number of posts in DB
           res.body.should.have.length.of(count);
         });
     });
 
-    it('should return messages with right fields', function() {
+    it('should return users with right fields', function() {
       // Strategy: Get back all posts, and ensure they have expected keys
 
-      let resMessage;
+      let resUser;
       return chai.request(app)
-        .get('/messages')
+        .get('/users')
         .then(function(res) {
 
           res.should.have.status(200);
@@ -106,21 +105,21 @@ describe('messages API resource', function() {
           res.body.should.be.a('array');
           res.body.should.have.length.of.at.least(1);
 
-          res.body.forEach(function(post) {
-            post.should.be.a('object');
-            post.should.include.keys('sender', 'message', 'date');
-          });
-          // just check one of the messages that its values match with those in db
-          // and we'll assume it's true for rest
-          resMessage = res.body[0];
-          return Messages.findById(resMessage._id).exec();
+          res.body.forEach(function(user) {
+            user.should.be.a('object');
+            user.should.include.keys('username', 'firstName', 'lastName', 'reference');
+          })
+
+          resUser = res.body[0];
+          return User.findById(resUser._id).exec();
         })
-        .then(message => {
-          resMessage.sender.should.equal(message.sender);
-          resMessage.message.should.equal(message.message);
-          message.date.should.not.be.null;
-          new Date(resMessage.date).getTime().should.equal(message.date.getTime());
+        .then(user => {
+          resUser.username.should.equal(user.username);
+          resUser.firstName.should.equal(user.firstName);
+          resUser.lastName.should.equal(user.lastName);
+          resUser.reference.should.equal(user.reference);
         });
     });
   });
 });
+

@@ -10,6 +10,7 @@ const UserSchema = mongoose.Schema({
     required: true,
     unique: true
   },
+
   password: {
     type: String,
     required: true
@@ -39,6 +40,7 @@ const UserSchema = mongoose.Schema({
 
 UserSchema.methods.apiRepr = function() {
   return {
+    _id: this._id,
     username: this.username || '',
     firstName: this.firstName || '',
     lastName: this.lastName || '',
