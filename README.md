@@ -1,7 +1,7 @@
 # I Love You More - A Full Stack Web App
 
 <h2>Summary</h2>
-<p><a href="https://iloveyoumore.herokuapp.com" target="/blank">I Love You More</a> is a responsive full-stack (i.e. Mongo, Express, and  Node) app that allows users to send one-on-one messages to a loved one. </p>
+<p><a href="https://iloveyoumore.herokuapp.com" target="_blank">I Love You More</a> is a responsive full-stack (i.e. Mongo, Express, and  Node) app that allows users to send one-on-one messages to a loved one. </p>
  
 <p>The primary goal of I Love You More is to allow users to send messages to another user and keep track of messages sent and received creating a lasting memory of love notes.  When users sign up for the app, they sign up themselves and a partner…at this point the two are inseparable. </p>
  
@@ -41,19 +41,20 @@ Screen shots (800px width)
     <li>JQuery</li>
 </ul>
  
-Back End:
-Ø  Node.js + Express.js (web server)
+<strong>Back End:</strong>
+<ul>
+    <li>Node.js + Express.js (web server)</li>
+    <li>Babel (Using ES6 and ES7)</li>
+    <li>MongoDB (database)</li>
+    <li>Mocha + Chai (testing)</li>
+    <li>Continuous integration and deployment with Travis CI</li>
+</ul>
 
-Ø  Babel (Using ES6 and ES7)
-
-MongoDB (database)
-Mocha + Chai (testing)
-Continuous integration and deployment with Travis CI
-Security
-
-bcrypt.js to hash and encrypt passwords
-Passport is protect API endpoints
-
+<strong>Security</strong>
+<ul>
+    <li>bcrypt.js to hash and encrypt passwords</li>
+    </li>Passport is protect API endpoints</li>
+</ul>
 
 
 
