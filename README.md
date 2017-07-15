@@ -15,32 +15,26 @@ Screen shots (800px width)
 > cd love_you_more
 
 > npm install
-```
+
  
-Launching:
-```
-Ø  npm run watch
+<h2>Launching:</h2>
+> npm run watch
 
-```
  
-Testing:
-```
-Ø  npm test
+<h2>Testing:</h2>
+>  npm test
 
-```
-Note: Due to this project using promises Node.js version 7 or greater must be used.  To determine your version on Node, please type node –v from your terminal window.
+<p><strong>Note:</strong> Due to this project using promises Node.js version 7 or greater must be used.  To determine your version on Node, please type node –v from your terminal window.</p>
  
-Technology
+<h2>Technology</h2>
  
-Front End:
-Ø  HTML 5
-
-Ø  CSS3
-
-Ø  JavaScript
-
-Ø  JQuery
-
+<strong>Front End:</strong>
+<ul>
+    <li>HTML 5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li>JQuery</li>
+</ul>
  
 Back End:
 Ø  Node.js + Express.js (web server)
