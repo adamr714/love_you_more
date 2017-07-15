@@ -6,7 +6,7 @@
   "scripts": {
     "debug": "babel-node --debug server.js",
     "start": "babel-node server.js",
-    "test": "mocha ./test",
+    "test": "mocha ./test/test.js",
     "watch": "babel-watch server.js"
   },
   "author": "Adam Rosenblum",
