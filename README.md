@@ -59,7 +59,7 @@ Screen shots (800px width)
 <h2>Additional Resources include:</h2>
 <ul>
     <li>Font-Awesome (<a href="http://fontawesome.io/" target="_blank">http://fontawesome.io/</a>)– For the heart image used in the name and slider</li>
-    <li>Fabio Ottaviani (<a href="https://codepen.io/supah/" target="_blank"https://codepen.io/supah/</a>) - for the inpiration and starter code for the split slide</li>
+    <li>Fabio Ottaviani (<a href="https://codepen.io/supah/" target="_blank">https://codepen.io/supah/</a>) - for the inpiration and starter code for the split slide</li>
     <li>StackOverflow – Used to look for similar programming difficulties to overcome challenges</li>
 </uL
 
