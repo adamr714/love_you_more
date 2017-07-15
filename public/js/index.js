@@ -40,12 +40,12 @@ $('.slideshow-left').slick({
     $('.slideshow-text').slick('slickGoTo', nextSlide);
   }
 }).on("mousewheel", function(event) {
-  event.preventDefault();
-  if (event.deltaX > 0 || event.deltaY < 0) {
-    $(this).slick('slickNext');
-  } else if (event.deltaX < 0 || event.deltaY > 0) {
-    $(this).slick('slickPrev');
-  };
+  // // event.preventDefault();
+  // // if (event.deltaX > 0 || event.deltaY < 0) {
+  // //   $(this).slick('slickNext');
+  // // } else if (event.deltaX < 0 || event.deltaY > 0) {
+  // //   $(this).slick('slickPrev');
+  // };
 }).on('mousedown touchstart', function(){
   dragging = true;
   tracking = $('.slick-track', $slider).css('transform');
