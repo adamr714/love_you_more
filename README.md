@@ -24,6 +24,7 @@ Screen shots (800px width)
 ```
  
 <h2>Testing:</h2>
+
 ```
 >  npm test
 ```
