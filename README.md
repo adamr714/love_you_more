@@ -18,11 +18,15 @@ Screen shots (800px width)
 
  
 <h2>Launching:</h2>
-> npm run watch
 
+```
+> npm run watch
+```
  
 <h2>Testing:</h2>
+```
 >  npm test
+```
 
 <p><strong>Note:</strong> Due to this project using promises Node.js version 7 or greater must be used.  To determine your version on Node, please type node –v from your terminal window.</p>
  
