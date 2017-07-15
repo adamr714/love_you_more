@@ -162,16 +162,17 @@ $(document).ready(function() {
         console.log(password);
         console.log(passwordConfirm);
         if (password === passwordConfirm) {
-           $('#Error').hide();
-            // $('#PasswordMatch').hide();
-            $('#sumbit').prop("disabled", false).removeClass('grey');
+            $('#PasswordMatch').hide();
+        //    $('#Error').hide();
+        //     $('#PasswordMatch').hide();
+        //     $('#sumbit').prop("disabled", false).removeClass('grey');
 
         } else {
-            $('#Error').show(function(){
-                $('#Error').html('Pssst....Passwords need to match!');
-            });
-            // $('#PasswordMatch').show();
-            $('#sumbit').prop("disabled", true).addClass('grey');
+            $('#PasswordMatch').show();
+            // $('#Error').show(function(){
+            //     $('#Error').html('Pssst....Passwords need to match!');
+            // });
+            // $('#sumbit').prop("disabled", true).addClass('grey');
         }
     });
 
@@ -187,7 +188,6 @@ $(document).ready(function() {
         var cannedMessages;
         var cannedMessagesData = '<option value = "-1"></option>';
         cannedMessages = data;
-        // console.log(cannedMessages);
         for (var i = 0; i < cannedMessages.length; i++) {
             cannedMessagesData += "<option value='" + i + "'>" +
                 cannedMessages[i].message + "</option>";

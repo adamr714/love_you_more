@@ -21,23 +21,6 @@ const UserSchema = mongoose.Schema({
   // anniversary: {type: String, default: ""}
 });
 
-
-// 	"self": {
-// 		"username":"jdoe2",
-// 		"password":"123345",
-// 		"firstName": "John",
-// 		"lastName":"Doe",
-//     "email":"john.doe@gmail.com"
-// 	},
-// 	"other": {
-// 		"username":"janedoe2",
-// 		"password":"123345",
-// 		"firstName": "Jane",
-// 		"lastName":"Doe",
-//     "email":"jane.doe@gmail.com"
-// 	}
-// }
-
 UserSchema.methods.apiRepr = function() {
   return {
     _id: this._id,
@@ -45,7 +28,6 @@ UserSchema.methods.apiRepr = function() {
     firstName: this.firstName || '',
     lastName: this.lastName || '',
     reference: this.reference || ''
-    // anniversary: this.anniversary || ''
   };
 }
 
