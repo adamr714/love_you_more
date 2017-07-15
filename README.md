@@ -53,7 +53,21 @@ Screen shots (800px width)
 <strong>Security</strong>
 <ul>
     <li>bcrypt.js to hash and encrypt passwords</li>
-    </li>Passport is protect API endpoints</li>
+    <li>Passport is protect API endpoints</li>
+</ul>
+
+<h2>Additional Resources include:</h2>
+<ul>
+    <li>Font-Awesome (http://fontawesome.io/)– For the heart image used in the name and slider</li>
+    <li>Fabio Ottaviani (https://codepen.io/supah/) - for the inpiration and starter code for the split slide</li>
+    <li>StackOverflow – Used to look for similar programming difficulties to overcome challenges</li>
+</uL
+
+<h2>I would also like to thank:</h2>
+
+<ul>
+    <li>Neville Bonavia – An amazing programmer and mentor who answered numerous questions and challenged me to make this project all it could be!</li>
+    <li>Derek Fogge - For being an awesome program manager and having the time to sit down and help me sort out issues and give suggestions on how to make my coding better</li>
 </ul>
 
 
