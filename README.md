@@ -5,7 +5,7 @@
  
 <p>The primary goal of I Love You More is to allow users to send messages to another user and keep track of messages sent and received creating a lasting memory of love notes.  When users sign up for the app, they sign up themselves and a partner…at this point the two are inseparable. </p>
  
-Screen shots (800px width)
+<img src ="http://adamr714.com/love_you_more/Love_You_More.jpg" alt="I love you more screen shots" />
  
 <h2>Getting Started:</h2>
 
