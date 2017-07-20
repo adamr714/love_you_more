@@ -185,7 +185,7 @@ $(document).ready(function() {
     });
 
     // Canned Messages
-    http.get("/canned_messages/", function(data) {
+    http.get("canned_messages/", function(data) {
         var cannedMessages;
         var cannedMessagesData = '<option value = "-1"></option>';
         cannedMessages = data;
