@@ -70,6 +70,7 @@ function displaySendMessage() {
 function loggedIn() {
     $('#signUpForm,#mainText,#myTopnav,#slideshowContainer').hide();
     $('#myTopnavLogout,#myProfile').show();
+    $('#register, #login').trigger("reset");
 };
 
 var messageResults = function(element) {
