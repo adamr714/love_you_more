@@ -16,7 +16,8 @@
 
 > npm install
 
- 
+If you woudl like the canned messages dropdown to be populated, please upload the Canned_Messages.json file to your database.  The file can be located in the canned_messages directory.
+
 <h2>Launching:</h2>
 
 ```
