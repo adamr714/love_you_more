@@ -32,6 +32,7 @@ function userRegistration(registration) {
     console.log(registration);
     http.post("users/register/", registration, function(data) {
             onTabSelect('#logInTab');
+            $('#register, #login').trigger("reset");
             registerInProgress = false;
         },
         function(errorJSON) {

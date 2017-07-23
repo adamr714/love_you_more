@@ -42,15 +42,15 @@ body, html {
           transform: translate(-50%, -50%);
 }
 .slideshow .slick-dots {
-  position: fixed;
+  position: absolute;
   z-index: 100;
   width: 40px;
   height: auto;
-  bottom: auto;
-  top: 34%;
+  /* bottom: auto; */
+  top: 41%;
   right: 0;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   left: auto;
   color: #fff;
   display: block;
@@ -121,4 +121,34 @@ body, html {
   .slideshow-text {
     font-size: 40px;
   }
+}
+
+@media only screen and (min-device-width: 320px) {
+    .slideshow .slick-dots {
+    position: absolute;
+    z-index: 100;
+    width: 40px;
+    height: auto;
+    /* bottom: auto; */
+    top: 55%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: auto;
+    color: #fff;
+    display: block;
+    }
+
+    .slideshow-text {
+       top: 3em;
+       left: 50%;
+       -webkit-transform: translate(-50%, -50%);
+       z-index: 100;
+       text-align: center;
+       color: #fff;
+       font-family: 'Roboto Condensed', sans-serif;
+       letter-spacing: .2em;
+       line-height: 0.9;
+       text-shadow: 2px 2px #000;
+    }
 }
