@@ -72,7 +72,7 @@ $(document).ready(function() {
     });
 
     window.setInterval(function() {
-      console.log('this is a slide');
+      // console.log('this is a slide');
       $('.slideshow-left').slick('slickNext');
     }, 5000); 
 });

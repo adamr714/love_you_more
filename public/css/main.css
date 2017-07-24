@@ -198,6 +198,7 @@ p.right {
 .topnav {
     /*background-color: #333;*/
     overflow: hidden;
+    font-family: sans-serif;
 }
 
 /* Style the links inside the navigation bar */
